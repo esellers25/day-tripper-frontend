@@ -4,6 +4,7 @@ import {Switch, Route} from "react-router-dom";
 import Login from './Login';
 import Signup from './Signup';
 import HomePage from './HomePage';
+import UserHome from './UserHome';
 
 function App() {
   const [user, setUser] = useState(null)
@@ -18,6 +19,7 @@ function App() {
     }
   }, [])
 
+  
   function onLogin(userInfo){
     setUser(userInfo)
   }
@@ -32,6 +34,9 @@ function App() {
       </Route>
       <Route exact path="/home">
         <HomePage />
+      </Route>
+      <Route exact path="/user/:id">
+        <UserHome signedInUser={user}/>
       </Route>
     </Switch>
   );
