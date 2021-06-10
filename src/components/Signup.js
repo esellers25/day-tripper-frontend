@@ -1,8 +1,12 @@
 import {useHistory} from "react-router-dom";
+import {useDispatch} from 'react-redux'; 
+import {useState} from 'react'; 
 
 function Signup(){
 
     const history = useHistory()
+    const dispatch = useDispatch()
+    const [errorMessage, setErrorMessage] = useState("")
 
     function handleLoginClick(){
         history.push("/login")
@@ -25,15 +29,21 @@ function Signup(){
             })
         })
         .then(r => r.json())
-        .then(response => {
-            console.log(response)
-            history.push("/login")
-            })
+        .then(resp => {
+            if(resp.error){
+                setErrorMessage(resp.error)
+            } else {
+                dispatch({type: "setUserInfo", payload: resp})
+                localStorage.token = resp.token
+                history.push("/home")
+            }
+        })
     }
 
     return(
         <div className="login-form">
         <h2>Signup for an Account</h2>
+        <p>{errorMessage}</p>
         <form onSubmit={(e) => signUp(e)}>
             <label htmlFor="name">Name</label>
             <input name="name" type="text"/>

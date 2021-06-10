@@ -1,26 +1,28 @@
 import {useHistory} from 'react-router-dom'
-import {useEffect} from 'react'
+import {useEffect, useState} from 'react'
+import {useDispatch, useSelector} from 'react-redux'
+import TrailList from './TrailList'
 
 function HomePage(){
 
-    const history = useHistory()
+    const dispatch = useDispatch()
+    const trails = useSelector((state) => state.trailReducer.trails)
+    const [isLoaded, setIsLoaded] = useState(false)
 
     useEffect(() => {
         fetch("http://localhost:3000/trails")
         .then(r => r.json())
-        .then(trailData => console.log(trailData))
+        .then(trailData => {
+            dispatch({type: "setTrailInfo", payload: trailData})
+            setIsLoaded(true)
+        })
     }, [])
 
-
-    function logOut(){
-        localStorage.clear()
-        history.push("/login")
-    }
-    
+        
     return(
         <div>
-            <h1>HOME PAGE</h1>
-            <button onClick={logOut}>Logout</button>
+            <h2>Browse All Hiking Trails</h2>
+            <TrailList trails={trails}/>
         </div>
     )
 }

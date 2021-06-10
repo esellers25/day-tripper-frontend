@@ -5,7 +5,11 @@ let initialUserState = {
     username: "",
     id: null, 
     token: "",
-    lists: []
+    lists: [],
+    email: "",
+    profilePic: "",
+    location: "",
+    name: ""
 }
 
 let userReducer = (state = initialUserState, action) => {
@@ -18,6 +22,14 @@ let userReducer = (state = initialUserState, action) => {
                 id: action.payload.user.id,
                 lists: action.payload.user.lists
             }
+        case "setUserProfileInfo":
+        return {
+            ...state,
+            email: action.payload.email,
+            location: action.payload.location,
+            profilePic: action.payload.profile_picture,
+            name: action.payload.name
+        }
         default: 
             return state
     }

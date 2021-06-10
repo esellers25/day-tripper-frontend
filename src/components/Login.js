@@ -7,7 +7,7 @@ function Login(){
     const history = useHistory()
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
-    const [errorMessage, setErrormessage] = useState("")
+    const [errorMessage, setErrorMessage] = useState("")
     const dispatch = useDispatch()
     
     function logIn(e){
@@ -26,7 +26,7 @@ function Login(){
         .then(r => r.json())
         .then(resp => {
             if(resp.error){
-                setErrormessage(resp.error)
+                setErrorMessage(resp.error)
             } else {
                 dispatch({type: "setUserInfo", payload: resp})
                 localStorage.token = resp.token
