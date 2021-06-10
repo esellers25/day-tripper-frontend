@@ -7,6 +7,7 @@ import HomePage from './HomePage';
 import UserHome from './UserHome';
 import { useSelector, useDispatch } from 'react-redux'
 import Header from './Header';
+import TrailMainPage from './TrailMainPage';
 
 function App() {
   
@@ -44,6 +45,9 @@ function App() {
         </Route>
         <Route exact path="/home">
           <HomePage />
+        </Route>
+        <Route exact path="/trail/:id">
+          <TrailMainPage />
         </Route>
         <Route exact path="/user/:id">
           <UserHome />

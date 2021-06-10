@@ -6,14 +6,16 @@ import TrailList from './TrailList'
 function HomePage(){
 
     const dispatch = useDispatch()
-    const trails = useSelector((state) => state.trailReducer.trails)
+    // const trails = useSelector((state) => state.trailReducer.trails)
+    const [trails, setTrails] = useState([])
     const [isLoaded, setIsLoaded] = useState(false)
 
     useEffect(() => {
         fetch("http://localhost:3000/trails")
         .then(r => r.json())
         .then(trailData => {
-            dispatch({type: "setTrailInfo", payload: trailData})
+            // dispatch({type: "setTrailInfo", payload: trailData})
+            setTrails(trailData)
             setIsLoaded(true)
         })
     }, [])

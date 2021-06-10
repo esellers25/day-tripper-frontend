@@ -5,6 +5,7 @@ function Header(){
 
     const history = useHistory()
     const username = useSelector((state) => state.userReducer.username)
+    const id = useSelector((state) => state.userReducer.id)
 
     function logOut(){
         localStorage.clear()
@@ -18,6 +19,7 @@ function Header(){
                 <nav>
                     <NavLink to="/home">Browse Trails</NavLink>
                     {username !== "" ? <NavLink to="/login" onClick={logOut}>LogOut</NavLink> : <NavLink to="/">Sign In</NavLink>}
+                    {username !== "" ? <NavLink to={`/user/${id}`}>My Profile</NavLink> : null}
                 </nav>
             </div>
             

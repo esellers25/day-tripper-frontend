@@ -9,6 +9,7 @@ function UserHome(){
     const name = useSelector((state) => state.userReducer.name)
     const location = useSelector((state) => state.userReducer.location)
     const email = useSelector((state) => state.userReducer.email)
+    const currentUserId = useSelector((state) => state.userReducer.id)
     const profilePic = useSelector((state) => state.userReducer.profilePic)
     const [pageLoaded, setPageLoaded] = useState(false)
     const {id} = useParams();
@@ -30,8 +31,9 @@ function UserHome(){
             <h3>{name}</h3>
             <p>{location}</p>
             <a href={`mailto:${email}`}>Email</a>
+            {currentUserId == id ? <button>Update my info</button> : null}
             <div>
-                <h3>{lists[0].title}</h3>
+                {/* <h3>{lists[0].title}</h3> */}
             </div>
         </div>
     )
