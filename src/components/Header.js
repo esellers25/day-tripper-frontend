@@ -18,7 +18,7 @@ function Header(){
             <div>
                 <nav>
                     <NavLink to="/home">Browse Trails</NavLink>
-                    {username !== "" ? <NavLink to="/login" onClick={logOut}>LogOut</NavLink> : <NavLink to="/">Sign In</NavLink>}
+                    {username !== "" ? <NavLink to="/login" onClick={logOut}>LogOut</NavLink> : <NavLink to="/login">Sign In</NavLink>}
                     {username !== "" ? <NavLink to={`/user/${id}`}>My Profile</NavLink> : null}
                 </nav>
             </div>

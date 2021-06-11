@@ -4,10 +4,11 @@ import {Switch, Route} from "react-router-dom";
 import Login from './Login';
 import Signup from './Signup';
 import HomePage from './HomePage';
-import UserHome from './UserHome';
 import { useSelector, useDispatch } from 'react-redux'
 import Header from './Header';
 import TrailMainPage from './TrailMainPage';
+import ProfilePage from './ProfilePage';
+import FavList from './FavList';
 
 function App() {
   
@@ -50,7 +51,10 @@ function App() {
           <TrailMainPage />
         </Route>
         <Route exact path="/user/:id">
-          <UserHome />
+          <ProfilePage />
+        </Route>
+        <Route exact path="/user/:id/lists">
+          <FavList/>
         </Route>
       </Switch>
     </div>
