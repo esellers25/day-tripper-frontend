@@ -5,12 +5,11 @@ import {useSelector, useDispatch} from 'react-redux'
 function ProfilePage(){
     
     const dispatch = useDispatch()
-    const lists = useSelector((state) => state.userReducer.lists)
     const name = useSelector((state) => state.userReducer.name)
     const location = useSelector((state) => state.userReducer.location)
     const userId = useSelector((state) => state.userReducer.id)
     const email = useSelector((state) => state.userReducer.email)
-    const profilePic = useSelector((state) => state.userReducer.profilePic)
+    // const profilePic = useSelector((state) => state.userReducer.profilePic)
     const [pageLoaded, setPageLoaded] = useState(false)
     const history = useHistory()
     const {id} = useParams();
@@ -22,7 +21,8 @@ function ProfilePage(){
             dispatch({type: "setUserProfileInfo", payload: userDetails})
             setPageLoaded(true)
         })
-    }, [])
+    }, [dispatch])
+
 
     if (pageLoaded) {
     return(
@@ -31,7 +31,7 @@ function ProfilePage(){
             <h3>{name}</h3>
             <p>{location}</p>
             <a href={`mailto:${email}`}>Email</a><br></br>
-            {userId === parseInt(id) ? <button>Update my info</button> : null}
+            {userId === parseInt(id) ? <button onClick={() => history.push(`/user/${id}/edit`)}>Update my info</button> : null}
             <div>
                 {userId === parseInt(id) ? <button onClick={() => history.push(`/user/${id}/lists`)}>See my lists</button> : null}
             </div>

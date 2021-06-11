@@ -34,12 +34,12 @@ function TrailMainPage(){
     }
     const reviewList = reviews.map((review) =>
     <div key={review.id}>
-        <h5>{review.user.username}</h5>
+        
         <p>{review.date}</p>
         <p>{review.difficulty}</p>
         <p>{review.comment}</p>
         <p>{review.rating}</p>
-        {userId === review.user.id ? <button onClick={() => onReviewDelete(review.id)}>delete</button> : null}
+        {userId === review.user_id ? <button onClick={() => onReviewDelete(review.id)}>delete</button> : null}
     </div>
     )
    

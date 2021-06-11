@@ -1,18 +1,18 @@
 import '../App.css';
-import {useState, useEffect} from 'react';
+import {useEffect} from 'react';
 import {Switch, Route} from "react-router-dom";
 import Login from './Login';
 import Signup from './Signup';
 import HomePage from './HomePage';
-import { useSelector, useDispatch } from 'react-redux'
+import {useDispatch } from 'react-redux'
 import Header from './Header';
 import TrailMainPage from './TrailMainPage';
 import ProfilePage from './ProfilePage';
 import FavList from './FavList';
+import EditProfile from './EditProfile';
 
 function App() {
   
-  // const display = useSelector((state) => state.trailReducer.display)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -30,7 +30,7 @@ function App() {
         }
       })
     }
-  }, [])
+  }, [dispatch])
   
 
   
@@ -52,6 +52,9 @@ function App() {
         </Route>
         <Route exact path="/user/:id">
           <ProfilePage />
+        </Route>
+        <Route exact path="/user/:id/edit">
+          <EditProfile/>
         </Route>
         <Route exact path="/user/:id/lists">
           <FavList/>

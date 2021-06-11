@@ -1,18 +1,20 @@
 import {useParams} from 'react-router-dom'
 import {useState, useEffect} from 'react'
+import ListCard from './ListCard'
 
 function FavList(){
 
     const {id} = useParams()
-    const [lists, setLists] = useState([])
+    const [list, setList] = useState({})
+    const [trailList, setTrailList] = useState([])
     const [pageLoaded, setPageLoaded] = useState(false)
     
     useEffect(() => {
         fetch(`http://localhost:3000/lists/${id}`)
         .then(r => r.json())
-        .then(lists => {
-            setLists(lists)
-            console.log(lists)
+        .then(resp => {
+            setList(resp)
+            setTrailList(resp.trail_lists)
             setPageLoaded(true)
         })
     }, [id])
@@ -23,16 +25,17 @@ function FavList(){
         )
     }
     
-    // const allTrails = lists.trail_lists.map((trail_list) => {
-    //     <p>{trail_list.id}</p>
-    // })
-    let allTrails = lists.trail_lists 
-    console.log(allTrails)
+  
+    let trails = trailList.map((obj) => obj.trail)
+    let myTrails = trails.map((trail) => 
+        <ListCard key={trail.id} trail={trail}/>
+    )
+
     
     return(
         <div>
             <h1>My Lists</h1>
-            {lists.title}
+            {myTrails}
         </div>
     )
 }

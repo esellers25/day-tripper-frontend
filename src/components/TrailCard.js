@@ -1,5 +1,6 @@
 import {useState} from 'react'
 import {useHistory} from 'react-router-dom'
+import {useSelector} from 'react-redux'
 import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
 import TrailModal from './TrailModal'
@@ -7,8 +8,24 @@ import TrailModal from './TrailModal'
 function TrailCard({trail}){
     
     const {name, location, state, id} = trail 
+    const lists = useSelector((state) => state.userReducer.lists)
     const history = useHistory()
     const [modalShow, setModalShow] = useState(false)
+
+    function addFavorite(){
+        fetch("http://localhost:3000/trail_lists", {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify({
+                trail_id: id, 
+                list_id: lists[0].id
+            })
+        })
+        .then(r => r.json())
+        .then(resp => console.log(resp))
+    }
 
     return(
         <div>
@@ -18,6 +35,7 @@ function TrailCard({trail}){
                 <Card.Title onClick={() => history.push(`/trail/${id}`)}>{name}</Card.Title>
                 <Card.Subtitle>{location}</Card.Subtitle>
                 <p>{state}</p>
+                <Button onClick={() => addFavorite()}>Add to Favorites</Button>
                 <Button variant="primary" onClick={() => setModalShow(true)}>
                     Quick View
                 </Button>
