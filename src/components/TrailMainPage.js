@@ -11,7 +11,8 @@ function TrailMainPage(){
     const [show, setShow] = useState(false)
     const [isLoaded, setIsLoaded] = useState(false)
     const [photoDisplay, setPhotoDisplay] = useState(false)
-    // const [reviews, setReviews] = useState([])
+    const [reviews, setReviews] = useState([])
+    const [photos, setPhotos] = useState([])
     const [comment, setComment] = useState("")
     const [difficulty, setDifficulty] = useState("")
     const [rating, setRating] = useState("")
@@ -29,19 +30,17 @@ function TrailMainPage(){
         .then(r => r.json())
         .then(resp => {
             dispatch({type: "setTrailInfo", payload: resp})
+            setPhotos(resp.photos)
+            setReviews(resp.reviews)
             setIsLoaded(true)
         })
     }, [])
     
     const trail = useSelector((state) => state.trailReducer.trail)
-    const reviews = useSelector((state) => state.trailReducer.reviews)
-    const photos = useSelector((state) => state.trailReducer.photos)
+    // const reviews = useSelector((state) => state.trailReducer.reviews)
+    // const photos = useSelector((state) => state.trailReducer.photos)
    
-    const photoSet = photos.map((photo) => {
-        <div>
-            <img src={photo.img_link}/>
-        </div>
-    })
+  
    
     function handleFormShow(){
        setShow(!show)
@@ -71,12 +70,15 @@ function TrailMainPage(){
        })
        .then(r => r.json())
        .then(newReview => {
-           dispatch({type: "add_new_review", action: newReview})
+        //    dispatch({type: "add_new_review", action: newReview})
+            let updatedReviews = [...reviews, newReview]
+            setReviews(updatedReviews)
            console.log(newReview)
            setRating("")
            setComment("")
            setDifficulty("")
            setDate(today)
+           setIsLoaded(true)
        })
     }
 
@@ -92,7 +94,9 @@ function TrailMainPage(){
         .then(resp => {
             console.log(resp)
             let updatedReviews = reviews.filter((review) => review.id !== id)
-            dispatch({type:"delete_review", action: updatedReviews})
+            // dispatch({type:"delete_review", action: updatedReviews})
+            setReviews(updatedReviews)
+            setIsLoaded(true)
         })
     }
 
@@ -144,6 +148,12 @@ function TrailMainPage(){
             {userId === review.user_id ? <button onClick={() => onReviewDelete(review.id)}>delete</button> : null}
         </div>
         )
+       
+        const photoSet = photos.map((photo) => 
+            <div key={photo.id}>
+                <img src={photo.img_link} alt={photo.title}/>
+            </div>
+        )
 
         let trailIds = trailList.map((trailObj) => trailObj.trail_id)
 
@@ -169,13 +179,13 @@ function TrailMainPage(){
                 <h4>Route Type: {trail.route_type}</h4>
                 <h4>Difficulty: {trail.difficulty}</h4>
                 <h4>Distance: {trail.length} miles</h4>
-                <h4>Elevation Gain: {trail.elevation_gain}</h4>
+                <h4>Elevation Gain: {trail.elevation_gain} ft</h4>
             </div>
             <div>
             {reviewList}
             </div>
             <div>
-                <h3>Add A review</h3>
+                <h3>Add a review</h3>
                 {localStorage.token ? <button onClick={handleFormShow}>Review</button> : "Log in to leave a review!"}
                 {show ? 
                 <div>

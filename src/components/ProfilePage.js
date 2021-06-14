@@ -13,11 +13,10 @@ function ProfilePage(){
         fetch(`http://localhost:3000/users/${id}`)
         .then(r => r.json())
         .then(userDetails => {
-            console.log(userDetails)
             dispatch({type: "setProfileInfo", payload: userDetails})
             setPageLoaded(true)
         })
-    }, [dispatch])
+    }, [id])
 
     const name = useSelector((state) => state.profileReducer.name)
     const username = useSelector((state) => state.profileReducer.username)
@@ -37,7 +36,7 @@ function ProfilePage(){
             <a href={`mailto:${email}`}>Email</a><br></br>
             {currentUserId === parseInt(id) ? <button onClick={() => history.push(`/user/${id}/edit`)}>Update my info</button> : null}
             <div>
-                {currentUserId === parseInt(id) ? <button onClick={() => history.push(`/user/${id}/lists`)}>See my lists</button> : null}
+                {currentUserId === parseInt(id) ? <button onClick={() => history.push(`/user/${id}/lists`)}>See Favorited Trails</button> : null}
             </div>
         </div>
     )

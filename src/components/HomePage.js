@@ -20,6 +20,12 @@ function HomePage(){
         })
     }, [])
 
+    if (!isLoaded) {
+        return (
+            <p>Loading!</p>
+        )
+    }
+
     const trailsByState = trails.filter((trail) => {
         if (selectedState === "All") {
             return true

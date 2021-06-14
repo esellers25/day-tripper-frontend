@@ -32,12 +32,6 @@ function Login(){
                 localStorage.token = resp.token
                 history.push("/home")
             }
-            // localStorage.setItem('username', userInfo.username) 
-            // localStorage.setItem('token', userInfo.token)
-            // localStorage.setItem('user', userInfo.id)
-            // localStorage.setItem('id', userInfo.id)
-            // handleLogin(userInfo)
-            // history.push("/home")
         })
     }
 

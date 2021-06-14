@@ -29,14 +29,6 @@ let userReducer = (state = initialUserState, action) => {
                 lists: action.payload.user.lists,
                 trailLists: action.payload.user.lists[0].trail_lists 
             }
-        // case "setUserProfileInfo":
-        // return {
-        //     ...state,
-        //     email: action.payload.email,
-        //     location: action.payload.location,
-        //     profilePic: action.payload.profile_picture,
-        //     name: action.payload.name
-        // }
         case "edit_profile_info":
             return{
                 ...state,

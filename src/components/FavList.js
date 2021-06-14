@@ -26,15 +26,28 @@ function FavList(){
     }
     
   
-    let trails = trailList.map((obj) => obj.trail)
-    let myTrails = trails.map((trail) => 
-        <ListCard key={trail.id} trail={trail}/>
+    let trails = trailList.map((obj) => ({trail: obj.trail, trail_list: obj.id}))
+  
+    let myTrails = trails.map((trailObj) => 
+        <ListCard key={trailObj.trail.id} trailObj={trailObj} onTrailDelete={handleTrailDelete}/>
     )
+
+    function handleTrailDelete(passedId){
+        fetch(`http://localhost:3000/trail_lists/${passedId}`, {
+            method: "DELETE"
+        })
+        .then(r => r.json())
+        .then(deletedTrail => {
+            let updatedTrailList = trailList.filter((trailList) => trailList.id !== passedId)
+            setTrailList(updatedTrailList)
+        })
+    }
 
     
     return(
         <div>
             <h1>My Lists</h1>
+            <h2>{list.title}</h2>
             {myTrails}
         </div>
     )
