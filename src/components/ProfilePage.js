@@ -5,11 +5,6 @@ import {useSelector, useDispatch} from 'react-redux'
 function ProfilePage(){
     
     const dispatch = useDispatch()
-    const name = useSelector((state) => state.userReducer.name)
-    const location = useSelector((state) => state.userReducer.location)
-    const userId = useSelector((state) => state.userReducer.id)
-    const email = useSelector((state) => state.userReducer.email)
-    // const profilePic = useSelector((state) => state.userReducer.profilePic)
     const [pageLoaded, setPageLoaded] = useState(false)
     const history = useHistory()
     const {id} = useParams();
@@ -18,22 +13,31 @@ function ProfilePage(){
         fetch(`http://localhost:3000/users/${id}`)
         .then(r => r.json())
         .then(userDetails => {
-            dispatch({type: "setUserProfileInfo", payload: userDetails})
+            console.log(userDetails)
+            dispatch({type: "setProfileInfo", payload: userDetails})
             setPageLoaded(true)
         })
     }, [dispatch])
 
+    const name = useSelector((state) => state.profileReducer.name)
+    const username = useSelector((state) => state.profileReducer.username)
+    const location = useSelector((state) => state.profileReducer.location)
+    const userId = useSelector((state) => state.profileReducer.id)
+    const email = useSelector((state) => state.profileReducer.email)
+    const currentUserId = useSelector((state) => state.userReducer.id)
+    // const profilePic = useSelector((state) => state.profileReducer.profilePic)
 
     if (pageLoaded) {
     return(
         <div>
             <h2>Profile Page</h2>
             <h3>{name}</h3>
+            <h5>Username : {username}</h5>
             <p>{location}</p>
             <a href={`mailto:${email}`}>Email</a><br></br>
-            {userId === parseInt(id) ? <button onClick={() => history.push(`/user/${id}/edit`)}>Update my info</button> : null}
+            {currentUserId === parseInt(id) ? <button onClick={() => history.push(`/user/${id}/edit`)}>Update my info</button> : null}
             <div>
-                {userId === parseInt(id) ? <button onClick={() => history.push(`/user/${id}/lists`)}>See my lists</button> : null}
+                {currentUserId === parseInt(id) ? <button onClick={() => history.push(`/user/${id}/lists`)}>See my lists</button> : null}
             </div>
         </div>
     )

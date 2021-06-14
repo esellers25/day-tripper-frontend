@@ -1,11 +1,27 @@
-let initialTrailState = []
+let initialTrailState = {
+    trail: {},
+    reviews: [],
+    photos: []
+}
 
 let trailReducer = (state = initialTrailState, action) => {
     switch(action.type) {
         case "setTrailInfo": 
         return {
             ...state,
-            trails: action.payload
+            trail: action.payload,
+            reviews: action.payload.reviews,
+            photos: action.payload.photos 
+        }
+        case "add_new_review":
+            return {
+                ...state, 
+                reviews: [...state.reviews, action.payload]
+            }
+        case "delete_review": 
+        return {
+            ...state, 
+            reviews: [action.payload]
         }
         default:
         return state 

@@ -9,8 +9,11 @@ function TrailCard({trail}){
     
     const {name, location, state, id} = trail 
     const lists = useSelector((state) => state.userReducer.lists)
+    const trailList = useSelector((state) => state.userReducer.trailLists)
     const history = useHistory()
     const [modalShow, setModalShow] = useState(false)
+
+    let trailIds = trailList.map((trailObj) => trailObj.trail_id)
 
     function addFavorite(){
         fetch("http://localhost:3000/trail_lists", {
@@ -35,7 +38,7 @@ function TrailCard({trail}){
                 <Card.Title onClick={() => history.push(`/trail/${id}`)}>{name}</Card.Title>
                 <Card.Subtitle>{location}</Card.Subtitle>
                 <p>{state}</p>
-                <Button onClick={() => addFavorite()}>Add to Favorites</Button>
+                {trailIds.includes(id) ? <Button>See All Favorites</Button> : <Button onClick={() => addFavorite()}>Add to Favorites</Button>}
                 <Button variant="primary" onClick={() => setModalShow(true)}>
                     Quick View
                 </Button>

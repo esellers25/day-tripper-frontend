@@ -1,51 +1,56 @@
-import {useSelector} from 'react-redux'
-import {useParams} from 'react-router-dom'
+import {useSelector, useDispatch} from 'react-redux'
+import {useParams, useHistory} from 'react-router-dom'
 import {useEffect, useState} from 'react'
 
 function TrailMainPage(){
     let today = new Date().toISOString().substr(0, 10);
     
     const {id} = useParams()
-    const [trail, setTrail] = useState(null)
+    const history = useHistory()
+    // const [trail, setTrail] = useState(null)
     const [show, setShow] = useState(false)
     const [isLoaded, setIsLoaded] = useState(false)
-    const [reviews, setReviews] = useState([])
+    const [photoDisplay, setPhotoDisplay] = useState(false)
+    // const [reviews, setReviews] = useState([])
     const [comment, setComment] = useState("")
     const [difficulty, setDifficulty] = useState("")
     const [rating, setRating] = useState("")
     const [date, setDate] = useState(today)
+    const [favorited, setFavorited] = useState(false)
+    const [title, setTitle] = useState("")
+    const [img, setImg] = useState(null)
+    const dispatch = useDispatch()
     const userId = useSelector((state) => state.userReducer.id)
-
-
+    const lists = useSelector((state) => state.userReducer.lists)
+    const trailList = useSelector((state) => state.userReducer.trailLists)
+    
     useEffect(() => {
         fetch(`http://localhost:3000/trails/${id}`)
         .then(r => r.json())
-        .then(trailInfo => {
-            setTrail(trailInfo) 
-            setReviews(trailInfo.reviews)
+        .then(resp => {
+            dispatch({type: "setTrailInfo", payload: resp})
             setIsLoaded(true)
         })
-    }, [id])
-
-    if (!isLoaded) {
-        return (
-            <p>Loading</p>
-        )
-    }
-    const reviewList = reviews.map((review) =>
-    <div key={review.id}>
-        
-        <p>{review.date}</p>
-        <p>{review.difficulty}</p>
-        <p>{review.comment}</p>
-        <p>{review.rating}</p>
-        {userId === review.user_id ? <button onClick={() => onReviewDelete(review.id)}>delete</button> : null}
-    </div>
-    )
+    }, [])
+    
+    const trail = useSelector((state) => state.trailReducer.trail)
+    const reviews = useSelector((state) => state.trailReducer.reviews)
+    const photos = useSelector((state) => state.trailReducer.photos)
+   
+    const photoSet = photos.map((photo) => {
+        <div>
+            <img src={photo.img_link}/>
+        </div>
+    })
    
     function handleFormShow(){
        setShow(!show)
     }
+
+    function handlePhotoChange(e){
+        setImg(e.target.files[0])
+    }
+   
 
    function onReviewSubmit(e){
        e.preventDefault()
@@ -60,13 +65,14 @@ function TrailMainPage(){
                rating: rating,
                difficulty: difficulty,
                date: date,
-               user_id: userId,
-               trail_id: id
+               trail_id: id,
+               user_id: userId
            })
        })
        .then(r => r.json())
        .then(newReview => {
-           setReviews(...reviews, newReview)
+           dispatch({type: "add_new_review", action: newReview})
+           console.log(newReview)
            setRating("")
            setComment("")
            setDifficulty("")
@@ -86,16 +92,80 @@ function TrailMainPage(){
         .then(resp => {
             console.log(resp)
             let updatedReviews = reviews.filter((review) => review.id !== id)
-            setReviews(updatedReviews)
+            dispatch({type:"delete_review", action: updatedReviews})
         })
     }
 
+    function addFavorite(){
+        fetch("http://localhost:3000/trail_lists", {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify({
+                trail_id: id, 
+                list_id: lists[0].id
+            })
+        })
+        .then(r => r.json())
+        .then(resp => setFavorited(true))
+    }
+
+    function handlePhotoDisplay(){
+        setPhotoDisplay(!photoDisplay)
+    }
+
+    function addPhoto(e){
+        e.preventDefault()
+        const formData = new FormData()
+        formData.append('img_link', img)
+        formData.append('title', title)
+        formData.append('date', today)
+        formData.append('user_id', userId)
+        formData.append('trail_id', id)
+        fetch("http://localhost:3000/photos", {
+            method: "POST",
+            body: formData
+        })
+        .then(r => r.json())
+        .then(resp => console.log(resp))
+    }
+   
+
+    if (isLoaded) {
+
+        const reviewList = reviews.map((review) =>
+        <div key={review.id}>
+            <p onClick={() => history.push(`/user/${review.user_id}`)}>{review.review_author}</p>
+            <p>{review.date}</p>
+            <p>{review.difficulty}</p>
+            <p>{review.comment}</p>
+            <p>{review.rating}</p>
+            {userId === review.user_id ? <button onClick={() => onReviewDelete(review.id)}>delete</button> : null}
+        </div>
+        )
+
+        let trailIds = trailList.map((trailObj) => trailObj.trail_id)
 
     return(
         <div>
             <div>
                 <h1>{trail.name}</h1>
                 <h2>{trail.location} ({trail.state})</h2>
+                {photoSet}
+                {trailIds.includes(parseInt(id)) ? null : <button onClick={() => addFavorite()}>{favorited ? "Added" : "Add to favorites"}</button>}
+                <button onClick={() => handlePhotoDisplay()}>Upload a photo</button>
+                {photoDisplay ? 
+                <div>
+                    <form onSubmit={addPhoto}>
+                        <label htmlFor="title">Title</label>
+                        <input name="title" value={title} onChange={(e) => setTitle(e.target.value)}></input>
+                        <label htmlFor="image">File</label>
+                        <input type="file" accept='image/*' name="image" multiple={false} onChange={handlePhotoChange}></input>
+                        <button>Add photo</button>
+                    </form>
+                </div> : 
+                null}
                 <h4>Route Type: {trail.route_type}</h4>
                 <h4>Difficulty: {trail.difficulty}</h4>
                 <h4>Distance: {trail.length} miles</h4>
@@ -128,7 +198,12 @@ function TrailMainPage(){
                 null}
             </div>
         </div>
-    )
+    )}
+    else {
+        return (
+          <p>Loading</p>
+        )
+      }
 }
 
 export default TrailMainPage; 

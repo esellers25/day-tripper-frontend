@@ -9,8 +9,8 @@ function TrailModal({trail, onHide, show}){
             <Modal 
             show={show}
             size="lg"
-            // aria-labelledby="contained-modal-title-vcenter"
-            centered
+            aria-labelledby="contained-modal-title-vcenter"
+            // centered
             >
                 <Modal.Title>{name}</Modal.Title>
                 <Modal.Body>
