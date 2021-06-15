@@ -1,4 +1,4 @@
-import { useHistory, NavLink} from 'react-router-dom'
+import { useHistory} from 'react-router-dom'
 import {useSelector} from 'react-redux'
 import { Nav, Navbar } from 'react-bootstrap'
 

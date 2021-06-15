@@ -21,7 +21,6 @@ function ProfilePage(){
     const name = useSelector((state) => state.profileReducer.name)
     const username = useSelector((state) => state.profileReducer.username)
     const location = useSelector((state) => state.profileReducer.location)
-    const userId = useSelector((state) => state.profileReducer.id)
     const email = useSelector((state) => state.profileReducer.email)
     const currentUserId = useSelector((state) => state.userReducer.id)
     // const profilePic = useSelector((state) => state.profileReducer.profilePic)
