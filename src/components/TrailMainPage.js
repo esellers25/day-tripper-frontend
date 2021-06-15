@@ -1,6 +1,7 @@
 import {useSelector, useDispatch} from 'react-redux'
 import {useParams, useHistory} from 'react-router-dom'
 import {useEffect, useState} from 'react'
+import Carousel from 'react-bootstrap/Carousel'
 
 function TrailMainPage(){
     let today = new Date().toISOString().substr(0, 10);
@@ -149,20 +150,36 @@ function TrailMainPage(){
         </div>
         )
        
-        const photoSet = photos.map((photo) => 
-            <div key={photo.id}>
-                <img src={photo.img_link} alt={photo.title}/>
-            </div>
-        )
+        // const photoSet = photos.map((photo) => 
+        //     <div key={photo.id}>
+        //         <img src={photo.img_link} alt={photo.title}/>
+        //     </div>
+        // )
+
+       
+        const slidePhotos = photos.slice(0, 3)
+      
+        // console.log(slidePhotos)
 
         let trailIds = trailList.map((trailObj) => trailObj.trail_id)
 
     return(
         <div>
             <div>
-                <h1>{trail.name}</h1>
+                <h2>{trail.name}</h2>
                 <h2>{trail.location} ({trail.state})</h2>
-                {photoSet}
+                {/* {photoSet} */}
+                <Carousel className="carousel">
+                        <Carousel.Item className="item">
+                            <img src={slidePhotos[2].img_link} className="d-block w-100" alt={slidePhotos[2].title}/>
+                        </Carousel.Item>
+                        <Carousel.Item className="item">
+                            <img src={slidePhotos[0].img_link} className="d-block w-100" alt={slidePhotos[0].title}/>
+                        </Carousel.Item>
+                        <Carousel.Item className="item">
+                            <img src={slidePhotos[1].img_link} className="d-block w-100" alt={slidePhotos[1].title}/>
+                        </Carousel.Item>
+                </Carousel>
                 {trailIds.includes(parseInt(id)) ? null : <button onClick={() => addFavorite()}>{favorited ? "Added" : "Add to favorites"}</button>}
                 <button onClick={() => handlePhotoDisplay()}>Upload a photo</button>
                 {photoDisplay ? 

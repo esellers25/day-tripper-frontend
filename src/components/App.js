@@ -10,6 +10,7 @@ import TrailMainPage from './TrailMainPage';
 import ProfilePage from './ProfilePage';
 import FavList from './FavList';
 import EditProfile from './EditProfile';
+import { createGlobalStyle } from "styled-components";
 
 function App() {
   
@@ -32,10 +33,23 @@ function App() {
     }
   }, [dispatch])
   
+  const GlobalStyle = createGlobalStyle`
+  body {
+    background-color: #7DA3A1;
+    margin: 0% 7% 5% 7%;
+  }
 
+  h1 {
+    font-family: 'Caveat', cursive;
+    font-size: 7em;
+    cursor: pointer;
+    text-align: center;
+  }
+  `
   
   return (
     <div>
+      <GlobalStyle />
       <Header />
       <Switch>
         <Route exact path="/login">

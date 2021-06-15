@@ -11,3 +11,93 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* ******** Filter Page ********* */
+
+.filterBar {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 20px;
+  max-height: 350px;
+  width: 215px;
+  height: 310px;
+  background-color: white;
+  padding: 0.5rem;
+  padding-bottom: 1rem;
+  border-radius: 3px;
+}
+
+.filterInputs {
+  display: inline-block;
+}
+
+.filterNav {
+  text-align: center;
+  width: 210px;
+  display: inline-block;
+  margin-right: 50px;
+  position: sticky;
+}
+
+/* ******** All Trails Page ********* */
+
+.trailList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.trailsHome {
+  display: flex;
+  flex-direction: row;
+}
+
+.trailsHomeContainer h2 {
+  text-align: center;
+  margin: 15px, 0, 15px, 0;
+}
+
+/* ******** Individual Trail Page ********* */
+
+
+.carousel {
+  width: 1100px;
+  height: 700px;
+}
+
+.carousel .item {
+  max-height: 700px;
+}
+
+/* ******** Header ********* */
+
+
+.header {
+  background-color: #f5f9f92e;
+  padding-top: 20px;
+  margin-left: 0px;
+}
+
+.navbar {
+  margin-top: 5px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  /* align-items: left; */
+  border-radius: 4%;
+  padding: 0.2rem;
+}
+
+.navbar a {
+  font-size: 22px;
+}
+
+.navbar a:hover {
+  background-color: white;
+}

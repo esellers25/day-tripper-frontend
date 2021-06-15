@@ -71,13 +71,15 @@ function HomePage(){
 
         
     return(
-        <div>
-            <h2>Browse All Hiking Trails</h2>
+        <div className="trailsHomeContainer">
+            <h2>All Hiking Trails</h2>
+            <div className="trailsHome">
             <Filter onStateChange={handleStateChange}
             onDifficultyChange={handleDifficultyChange}
             onLengthChange={handleLengthChange}
             />
             <TrailList trails={trailsByLength}/>
+            </div>
         </div>
     )
 }

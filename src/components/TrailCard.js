@@ -32,7 +32,7 @@ function TrailCard({trail}){
 
     return(
         <div>
-            <Card>
+            <Card style={{ width: '20rem' }}>
                 <Card.Header></Card.Header>
                 <Card.Body></Card.Body>
                 <Card.Title onClick={() => history.push(`/trail/${id}`)}>{name}</Card.Title>

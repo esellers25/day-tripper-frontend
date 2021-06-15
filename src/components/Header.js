@@ -1,5 +1,6 @@
 import { useHistory, NavLink} from 'react-router-dom'
 import {useSelector} from 'react-redux'
+import { Nav, Navbar } from 'react-bootstrap'
 
 function Header(){
 
@@ -13,15 +14,15 @@ function Header(){
     }
 
     return(
-        <div>
+        <div className="header">
             <h1>Day Tripper</h1>
-            <div>
-                <nav>
-                    <NavLink to="/home">Browse Trails</NavLink>
-                    {username !== "" ? <NavLink to="/login" onClick={logOut}>LogOut</NavLink> : <NavLink to="/login">Sign In</NavLink>}
-                    {username !== "" ? <NavLink to={`/user/${id}`}>My Profile</NavLink> : null}
-                </nav>
-            </div>
+            <Navbar>
+                <Nav className="navbar">
+                    <Nav.Link href="/home">Browse Trails</Nav.Link>
+                    {username !== "" ? <Nav.Link href="/login" onClick={logOut}>LogOut</Nav.Link> : <Nav.Link href="/login">Sign In</Nav.Link>}
+                    {username !== "" ? <Nav.Link href={`/user/${id}`}>My Profile</Nav.Link> : null}
+                </Nav>
+            </Navbar>
             
         </div>
     )
