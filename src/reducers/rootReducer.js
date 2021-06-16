@@ -29,6 +29,18 @@ let userReducer = (state = initialUserState, action) => {
                 lists: action.payload.user.lists,
                 trailLists: action.payload.user.lists[0].trail_lists 
             }
+        case "userSignUp":
+            return {
+                ...state,
+                username: action.payload.user.username,
+                token: action.payload.token,
+                id: action.payload.user.id,
+                email: action.payload.user.email,
+                location: action.payload.user.location,
+                profilePic: action.payload.user.profile_picture,
+                name: action.payload.user.name,
+                lists: action.payload.user.lists
+            }
         case "edit_profile_info":
             return{
                 ...state,

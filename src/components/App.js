@@ -27,6 +27,8 @@ function App() {
       })
       .then(r => r.json())
       .then(resp => {
+        console.log(resp)
+        debugger
         if(resp.token){
           dispatch({type: "setUserInfo", payload: resp})
         }

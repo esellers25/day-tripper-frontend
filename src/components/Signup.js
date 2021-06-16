@@ -33,7 +33,7 @@ function Signup(){
             if(resp.error){
                 setErrorMessage(resp.error)
             } else {
-                dispatch({type: "setUserInfo", payload: resp})
+                dispatch({type: "userSignUp", payload: resp})
                 localStorage.token = resp.token
                 history.push("/home")
             }

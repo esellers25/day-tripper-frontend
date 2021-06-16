@@ -4,7 +4,6 @@ import Modal from 'react-bootstrap/Modal'
 function TrailModal({trail, onHide, show}){
     const {name, difficulty, state, location, length, elevation_gain} = trail
 
-  
     
     return(
         <div>
