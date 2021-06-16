@@ -7,7 +7,7 @@ import TrailModal from './TrailModal'
 
 function TrailCard({trail}){
     
-    const {name, location, state, id} = trail 
+    const {name, location, id, photos} = trail 
     const lists = useSelector((state) => state.userReducer.lists)
     const trailList = useSelector((state) => state.userReducer.trailLists)
     const userId = useSelector((state) => state.userReducer.id)
@@ -45,16 +45,38 @@ function TrailCard({trail}){
         paddingBottom: '0.5rem'
     }
 
+    function favButton(userId){
+        if(userId && trailIds.includes(id)) {
+        return (<SmallButton secondary onClick={() => history.push(`/user/${userId}/lists`)}>See My Favorites</SmallButton>)
+        }
+        else if(userId) {
+            return (<SmallButton secondary onClick={() => addFavorite()}>{favorited ? "Added!" : "Add to Favorites"}</SmallButton>)
+        }
+        else {
+            return (null)
+        }
+    }
+
+    let cardStyle = {
+        width: '20rem',
+        height: '28rem',
+        textAlign: 'center',
+        alignItems: 'center',
+        marginBottom: '28px',
+        paddingBottom: '0.5rem'
+
+    }
     return(
         <div>
-            <Card style={cardstyle}>
+            <Card style={cardStyle}>
+                {photos.length > 0 ? <Card.Img variant="top" src={photos[0].img_link} alt={photos[0].title}/> : null}
                 <Card.Body></Card.Body>
-                <Card.Title onClick={() => history.push(`/trail/${id}`)}>{name}</Card.Title>
+                <Card.Title className="mainTrailTitle" onClick={() => history.push(`/trail/${id}`)}>{name}</Card.Title>
                 <Card.Subtitle>{location}</Card.Subtitle>
                 <SmallButton secondary onClick={() => setModalShow(true)}>
                     Quick View
                 </SmallButton>
-                {trailIds.includes(id) ? <SmallButton secondary onClick={() => history.push(`/user/${userId}/lists`)}>See My Favorites</SmallButton> : <SmallButton secondary onClick={() => addFavorite()}>{favorited ? "Added!" : "Add to Favorites"}</SmallButton>}
+                {favButton(userId)}
                 <TrailModal trail={trail} show={modalShow} onHide={() => setModalShow(false)}/>
             </Card>
         </div>

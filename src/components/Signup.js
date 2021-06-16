@@ -14,19 +14,16 @@ function Signup(){
 
     function signUp(e){
         e.preventDefault()
+        const formData = new FormData()
+        formData.append('name', e.target[0].value)
+        formData.append('username', e.target[1].value)
+        formData.append('email', e.target[2].value)
+        formData.append('profile_picture', e.target[3].files[0])
+        formData.append('location', e.target[4].value)
+        formData.append('password', e.target[5].value)
         fetch("http://localhost:3000/users", {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                name: e.target[0].value,
-                username: e.target[1].value,
-                email: e.target[2].value,
-                profile_picture: e.target[3].value,
-                location: e.target[4].value,
-                password: e.target[5].value, 
-            })
+            body: formData
         })
         .then(r => r.json())
         .then(resp => {
@@ -52,7 +49,7 @@ function Signup(){
             <label htmlFor="email">Email</label>
             <input name="email" type="text"/>
             <label htmlFor="profilepic">Profile Picture</label>
-            <input name="profilepic" type="text"/>
+            <input name="profilepic" type="file" accept='image/*'/>
             <label htmlFor="location">Location</label>
             <input name="location" type="text"/>
             <label htmlFor="password">Password</label>

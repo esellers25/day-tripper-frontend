@@ -14,7 +14,15 @@ function AddPhotoForm(){
     const [img, setImg] = useState(null)
 
     function handlePhotoDisplay(){
-        setPhotoDisplay(!photoDisplay)
+        if(userId) {
+            return (
+                setPhotoDisplay(!photoDisplay)
+            )
+        } else {
+            return (
+                setMessage("Login to post a photo!")
+            )
+        }
     }
 
     function handlePhotoChange(e){
@@ -36,7 +44,6 @@ function AddPhotoForm(){
         .then(r => r.json())
         .then(resp => {
             setMessage(resp.message)
-            console.log(resp)
             setPhotoDisplay(false)
             setTitle("")
         })

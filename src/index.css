@@ -24,7 +24,7 @@ code {
   padding-top: 20px;
   max-height: 350px;
   width: 215px;
-  height: 310px;
+  height: 275px;
   background-color: white;
   padding: 0.5rem;
   padding-bottom: 1rem;
@@ -64,6 +64,27 @@ code {
   margin: 15px, 0, 15px, 0;
 }
 
+.trailCard {
+  width: 20rem;
+  height: 25rem;
+  text-align: center;
+  align-items: center;
+  margin-bottom: 28px;
+  padding-bottom: 0.5rem;
+}
+
+.mainTrailTitle {
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+}
+
+@media (min-width: 576px) {
+  .card-deck .card .trailCard {
+    margin-bottom: 28px;
+  }
+}
+
 
 /* ******** Individual Trail Page ********* */
 
@@ -86,8 +107,9 @@ code {
 
 
 .header {
-  background-color: #f5f9f92e;
+  background-color: #bfd7e8;
   padding-top: 20px;
+  padding-left: 35px;
   margin-left: 0px;
 }
 
@@ -104,6 +126,7 @@ code {
 
 .navbar a:hover {
   background-color: white;
+  border-radius: 3px;
 }
 
 .navbar.navbar-nav {
@@ -118,21 +141,16 @@ code {
   justify-content: space-between;
 }
 
-/* ******** Edit Profile ********* */
-.editform {
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  margin-left: auto;
-  margin-right: auto;
-  width: 350px;
-  height: 450px;
-  background-color: rgb(240, 207, 135);
-  padding: 0.5rem;
+.trailComponents h2 {
+  text-align: center;
 }
+/* ******** Edit Profile ********* */
 
 .editcontainer {
+  text-align: center;
+}
+
+.addTrail {
   text-align: center;
 }
 
@@ -149,4 +167,8 @@ code {
   display: flex;
   /* flex-direction: row; */
   
+}
+
+.bodynohead {
+  margin: 0% 7% 5% 7%;
 }

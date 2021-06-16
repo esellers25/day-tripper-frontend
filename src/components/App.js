@@ -11,6 +11,8 @@ import ProfilePage from './ProfilePage';
 import FavList from './FavList';
 import EditProfile from './EditProfile';
 import { createGlobalStyle } from "styled-components";
+import TrailPhotos from './TrailPhotos';
+import AddTrailForm from './AddTrailForm';
 
 
 function App() {
@@ -27,7 +29,6 @@ function App() {
       })
       .then(r => r.json())
       .then(resp => {
-        console.log(resp)
         if(resp.token && resp.user.lists.length > 0){
           dispatch({type: "setUserInfo", payload: resp})
         }
@@ -41,8 +42,7 @@ function App() {
  
   const GlobalStyle = createGlobalStyle`
   body {
-    background-color: #6faf7d;
-    margin: 0% 7% 5% 7%;
+    background-color: #efe2ba;
   }
 
   h1 {
@@ -50,6 +50,11 @@ function App() {
     font-size: 7em;
     cursor: pointer;
     text-align: center;
+  }
+
+  h1:hover {
+    color: white;
+    text-shadow: 2px 2px black;
   }
 
   h2 {
@@ -67,29 +72,37 @@ function App() {
     <div>
       <GlobalStyle />
       <Header />
-      <Switch>
-        <Route exact path="/login">
-        <Login />
-        </Route>
-        <Route  exact path="/">
-          <Signup/>
-        </Route>
-        <Route exact path="/home">
-          <HomePage />
-        </Route>
-        <Route exact path="/trail/:id">
-          <TrailMainPage />
-        </Route>
-        <Route exact path="/user/:id">
-          <ProfilePage />
-        </Route>
-        <Route exact path="/user/:id/edit">
-          <EditProfile/>
-        </Route>
-        <Route exact path="/user/:id/lists">
-          <FavList/>
-        </Route>
-      </Switch>
+      <div className="bodynohead">
+        <Switch>
+          <Route exact path="/login">
+          <Login />
+          </Route>
+          <Route  exact path="/">
+            <Signup/>
+          </Route>
+          <Route exact path="/home">
+            <HomePage />
+          </Route>
+          <Route exact path="/trail/:id">
+            <TrailMainPage />
+          </Route>
+          <Route exact path="/trail/:id/photos">
+            <TrailPhotos/>
+          </Route>
+          <Route exact path="/user/:id">
+            <ProfilePage />
+          </Route>
+          <Route exact path="/user/:id/edit">
+            <EditProfile/>
+          </Route>
+          <Route exact path="/user/:id/lists">
+            <FavList/>
+          </Route>
+          <Route exact path="/addTrail">
+            <AddTrailForm/>
+          </Route>
+        </Switch>
+      </div>
     </div>
   );
 }

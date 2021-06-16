@@ -24,7 +24,14 @@ function ProfilePage(){
     const location = useSelector((state) => state.profileReducer.location)
     const email = useSelector((state) => state.profileReducer.email)
     const currentUserId = useSelector((state) => state.userReducer.id)
-    // const profilePic = useSelector((state) => state.profileReducer.profilePic)
+    const profilePic = useSelector((state) => state.profileReducer.profilePic)
+
+    let photoStyle = {
+        width: 'auto',
+        height: '210px',
+        margin: '10px',
+        borderRadius: '5px'
+    }
 
     if (pageLoaded) {
     return(
@@ -33,6 +40,7 @@ function ProfilePage(){
             <h3>{name}</h3>
             <h4>Username : {username}</h4>
             <p>{location}</p>
+            <img style={photoStyle} src={profilePic}/><br/>
             <Button as='a' href={`mailto:${email}`}>Email</Button><br/>
             {currentUserId === parseInt(id) ? <Button onClick={() => history.push(`/user/${id}/edit`)}>Update my info</Button> : null}<br/>
             {currentUserId === parseInt(id) ? <Button onClick={() => history.push(`/user/${id}/lists`)}>See Favorited Trails</Button> : null}

@@ -1,5 +1,5 @@
 import {useSelector, useDispatch} from 'react-redux'
-import {useParams} from 'react-router-dom'
+import {useParams, useHistory} from 'react-router-dom'
 import {useEffect, useState} from 'react'
 import TrailCarousel from './TrailCarousel';
 import TrailReviews from './TrailReviews';
@@ -9,6 +9,7 @@ import {Button} from './style';
 function TrailMainPage(){
     
     const {id} = useParams()
+    const history = useHistory()
     const [isLoaded, setIsLoaded] = useState(false)
     
     const [reviews, setReviews] = useState([])
@@ -64,12 +65,6 @@ function TrailMainPage(){
 
 
     if (isLoaded) {
-        // const photoSet = photos.map((photo) => 
-        //     <div key={photo.id}>
-        //         <img src={photo.img_link} alt={photo.title}/>
-        //     </div>
-        // )
-        // console.log(slidePhotos)
 
         let trailIds = trailList.map((trailObj) => trailObj.trail_id)
 
@@ -77,10 +72,10 @@ function TrailMainPage(){
         <div>
             <div className="trailComponents">
                 <h2>{trail.name} - {trail.location} ({trail.state})</h2>
-                {/* {photoSet} */}
                 {trailIds.includes(parseInt(id)) ? null : <Button onClick={() => addFavorite()}>{favorited ? "Added" : "Add to favorites"}</Button>}
-                <TrailCarousel photos={photos}/>
+                {/* <TrailCarousel photos={photos}/> */}
                 <AddPhotoForm />
+                <Button onClick={() => history.push(`/trail/${id}/photos`)}>See all photos</Button>
                 <div className="trailstats">
                     <h4>Route Type: {trail.route_type}</h4>
                     <h4>Difficulty: {trail.difficulty}</h4>
