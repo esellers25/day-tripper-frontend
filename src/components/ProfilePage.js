@@ -1,6 +1,7 @@
 import {useEffect, useState} from 'react';
 import {useParams, useHistory} from 'react-router-dom';
-import {useSelector, useDispatch} from 'react-redux'
+import {useSelector, useDispatch} from 'react-redux';
+import {Button} from './style'
 
 function ProfilePage(){
     
@@ -28,15 +29,13 @@ function ProfilePage(){
     if (pageLoaded) {
     return(
         <div>
-            <h2>Profile Page</h2>
+            <h2>My Details</h2>
             <h3>{name}</h3>
-            <h5>Username : {username}</h5>
+            <h4>Username : {username}</h4>
             <p>{location}</p>
-            <a href={`mailto:${email}`}>Email</a><br></br>
-            {currentUserId === parseInt(id) ? <button onClick={() => history.push(`/user/${id}/edit`)}>Update my info</button> : null}
-            <div>
-                {currentUserId === parseInt(id) ? <button onClick={() => history.push(`/user/${id}/lists`)}>See Favorited Trails</button> : null}
-            </div>
+            <Button as='a' href={`mailto:${email}`}>Email</Button><br/>
+            {currentUserId === parseInt(id) ? <Button onClick={() => history.push(`/user/${id}/edit`)}>Update my info</Button> : null}<br/>
+            {currentUserId === parseInt(id) ? <Button onClick={() => history.push(`/user/${id}/lists`)}>See Favorited Trails</Button> : null}
         </div>
     )
     }

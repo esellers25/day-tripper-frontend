@@ -1,6 +1,7 @@
 import {useHistory, useParams} from 'react-router-dom'
 import {useState} from 'react'
 import {useSelector} from 'react-redux'
+import {Button} from './style'
 
 function TrailReviews({reviews, onNewReview, onDeleteReview}){
     let today = new Date().toISOString().substr(0, 10);
@@ -68,7 +69,7 @@ function TrailReviews({reviews, onNewReview, onDeleteReview}){
             <p>{review.difficulty}</p>
             <p>{review.comment}</p>
             <p>{review.rating}</p>
-            {userId === review.user_id ? <button onClick={() => onReviewDelete(review.id)}>delete</button> : null}
+            {userId === review.user_id ? <Button onClick={() => onReviewDelete(review.id)}>delete</Button> : null}
         </div>
         )
     
@@ -79,7 +80,7 @@ function TrailReviews({reviews, onNewReview, onDeleteReview}){
         </div>
         <div>
             <h3>Add a review</h3>
-            {localStorage.token ? <button onClick={handleFormShow}>Review</button> : "Log in to leave a review!"}
+            {localStorage.token ? <Button onClick={handleFormShow}>Review</Button> : "Log in to leave a review!"}
             {show ? 
             <div>
                 <form onSubmit={onReviewSubmit}>
@@ -95,7 +96,7 @@ function TrailReviews({reviews, onNewReview, onDeleteReview}){
                     <input value={comment} onChange={(e) => setComment(e.target.value)} name="comment" type="textarea"></input>
                     <label htmlFor="date">Date</label>
                     <input value={date} onChange={(e) => setDate(e.target.value)} id="today" name="date" type="date"></input>
-                    <button type="submit">Submit my review</button>
+                    <Button type="submit">Submit my review</Button>
                 </form>
             </div> : 
             null}

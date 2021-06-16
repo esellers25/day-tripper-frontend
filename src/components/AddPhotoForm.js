@@ -1,6 +1,7 @@
 import {useState} from 'react'
 import {useSelector} from 'react-redux'
 import {useParams} from 'react-router-dom'
+import {Button} from './style'
 
 function AddPhotoForm(){
 
@@ -44,7 +45,7 @@ function AddPhotoForm(){
 
     return(
         <div>
-            <button onClick={() => handlePhotoDisplay()}>Upload a photo</button>
+            <Button onClick={() => handlePhotoDisplay()}>Upload a photo</Button>
                 <p>{message}</p>
                 {photoDisplay ? 
                 <div>
@@ -53,7 +54,7 @@ function AddPhotoForm(){
                         <input name="title" value={title} onChange={(e) => setTitle(e.target.value)}></input>
                         <label htmlFor="image">File</label>
                         <input type="file" accept='image/*' name="image" multiple={false} onChange={handlePhotoChange}></input>
-                        <button>Add photo</button>
+                        <Button>Add photo</Button>
                     </form>
                 </div> : 
                 null}

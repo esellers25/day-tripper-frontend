@@ -4,6 +4,7 @@ import {useEffect, useState} from 'react'
 import TrailCarousel from './TrailCarousel';
 import TrailReviews from './TrailReviews';
 import AddPhotoForm from './AddPhotoForm';
+import {Button} from './style';
 
 function TrailMainPage(){
     
@@ -61,6 +62,7 @@ function TrailMainPage(){
     }
 
 
+
     if (isLoaded) {
         // const photoSet = photos.map((photo) => 
         //     <div key={photo.id}>
@@ -73,17 +75,18 @@ function TrailMainPage(){
 
     return(
         <div>
-            <div>
-                <h2>{trail.name}</h2>
-                <h2>{trail.location} ({trail.state})</h2>
+            <div className="trailComponents">
+                <h2>{trail.name} - {trail.location} ({trail.state})</h2>
                 {/* {photoSet} */}
+                {trailIds.includes(parseInt(id)) ? null : <Button onClick={() => addFavorite()}>{favorited ? "Added" : "Add to favorites"}</Button>}
                 <TrailCarousel photos={photos}/>
-                {trailIds.includes(parseInt(id)) ? null : <button onClick={() => addFavorite()}>{favorited ? "Added" : "Add to favorites"}</button>}
                 <AddPhotoForm />
-                <h4>Route Type: {trail.route_type}</h4>
-                <h4>Difficulty: {trail.difficulty}</h4>
-                <h4>Distance: {trail.length} miles</h4>
-                <h4>Elevation Gain: {trail.elevation_gain} ft</h4>
+                <div className="trailstats">
+                    <h4>Route Type: {trail.route_type}</h4>
+                    <h4>Difficulty: {trail.difficulty}</h4>
+                    <h4>Distance: {trail.length} miles</h4>
+                    <h4>Elevation Gain: {trail.elevation_gain} ft</h4>
+                </div>
             </div>
             <TrailReviews reviews={reviews} onNewReview={handleNewReview} onDeleteReview={handleReviewDelete}/>
         </div>

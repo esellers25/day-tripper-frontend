@@ -3,12 +3,13 @@ import Modal from 'react-bootstrap/Modal'
 
 function TrailModal({trail, onHide, show}){
     const {name, difficulty, state, location, length, elevation_gain} = trail
+
+  
     
     return(
         <div>
             <Modal 
             show={show}
-            size="lg"
             aria-labelledby="contained-modal-title-vcenter"
             centered
             >

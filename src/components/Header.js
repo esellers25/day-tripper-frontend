@@ -17,7 +17,7 @@ function Header(){
         <div className="header">
             <h1>Day Tripper</h1>
             <Navbar>
-                <Nav className="navbar">
+                <Nav id="navbar">
                     <Nav.Link href="/home">Browse Trails</Nav.Link>
                     {username !== "" ? <Nav.Link href="/login" onClick={logOut}>LogOut</Nav.Link> : <Nav.Link href="/login">Sign In</Nav.Link>}
                     {username !== "" ? <Nav.Link href={`/user/${id}`}>My Profile</Nav.Link> : null}

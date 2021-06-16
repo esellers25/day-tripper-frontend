@@ -12,6 +12,7 @@ import FavList from './FavList';
 import EditProfile from './EditProfile';
 import { createGlobalStyle } from "styled-components";
 
+
 function App() {
   
   const dispatch = useDispatch()
@@ -32,10 +33,11 @@ function App() {
       })
     }
   }, [dispatch])
-  
+
+ 
   const GlobalStyle = createGlobalStyle`
   body {
-    background-color: #7DA3A1;
+    background-color: #6faf7d;
     margin: 0% 7% 5% 7%;
   }
 
@@ -44,6 +46,16 @@ function App() {
     font-size: 7em;
     cursor: pointer;
     text-align: center;
+  }
+
+  h2 {
+    font-family: 'Caveat', cursive;
+    font-size: 4em;
+    padding: 10px;
+    padding-bottom: 20px;
+  }
+  h3 {
+    font-family: 'Open Sans', sans-serif;
   }
   `
   

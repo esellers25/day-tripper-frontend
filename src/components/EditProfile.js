@@ -1,6 +1,7 @@
 import {useState} from 'react'
 import {useParams, useHistory} from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux'
+import {Button} from './style'
 
 function EditProfile(){
     const {id} = useParams()
@@ -49,9 +50,9 @@ function EditProfile(){
     }
     
     return(
-        <div>
+        <div className="editcontainer">
             <h2>Edit profile details</h2>
-            <form onSubmit={handleEditSubmit}>
+            <form onSubmit={handleEditSubmit} className="editform">
                 <label htmlFor="name">Name</label>
                 <input type="text" name="name" value={formInfo.name} onChange={handleChange}></input>
                 <label htmlFor="username" >Username</label>
@@ -64,7 +65,7 @@ function EditProfile(){
                 <input type="text" id="profilepic" name="profile_picture" value={formInfo.profile_picture} onChange={handleChange}></input>
                 <label htmlFor="password">Password</label>
                 <input type="password" name="password" value={formInfo.password} onChange={handleChange}></input>
-                <button type="submit">Save changes</button>
+                <Button type="submit">Save changes</Button>
             </form>
         </div>
     )
