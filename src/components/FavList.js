@@ -1,6 +1,7 @@
 import {useParams} from 'react-router-dom'
 import {useState, useEffect} from 'react'
 import ListCard from './ListCard'
+import CardDeck from 'react-bootstrap/CardDeck'
 
 function FavList(){
 
@@ -46,9 +47,14 @@ function FavList(){
     
     return(
         <div>
-            <h1>My Lists</h1>
             <h2>{list.title}</h2>
-            {myTrails}
+            <div className="favCards">
+                <div className="favList">
+                    <CardDeck style={{width: '18rem'}}>
+                        {myTrails}
+                    </CardDeck>
+                </div>
+            </div>
         </div>
     )
 }

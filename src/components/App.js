@@ -28,9 +28,11 @@ function App() {
       .then(r => r.json())
       .then(resp => {
         console.log(resp)
-        debugger
-        if(resp.token){
+        if(resp.token && resp.user.lists.length > 0){
           dispatch({type: "setUserInfo", payload: resp})
+        }
+        else if(resp.token){
+          dispatch({type: "userSignUp", payload: resp})
         }
       })
     }

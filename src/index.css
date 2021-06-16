@@ -135,3 +135,18 @@ code {
 .editcontainer {
   text-align: center;
 }
+
+/* ******** Fav List ********* */
+
+.favList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.favCards {
+  display: flex;
+  /* flex-direction: row; */
+  
+}
