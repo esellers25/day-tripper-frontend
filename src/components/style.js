@@ -33,5 +33,6 @@ text-align: left;
 `;
 
 export const TrailForm = styled(Form)`
-height: 600px;
+height: 620px;
+padding: 1rem;
 `;

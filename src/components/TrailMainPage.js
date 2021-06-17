@@ -5,6 +5,7 @@ import TrailCarousel from './TrailCarousel';
 import TrailReviews from './TrailReviews';
 import AddPhotoForm from './AddPhotoForm';
 import {Button} from './style';
+import TrailMap from './TrailMap';
 
 function TrailMainPage(){
     
@@ -51,7 +52,8 @@ function TrailMainPage(){
         fetch("http://localhost:3000/trail_lists", {
             method: "POST",
             headers: {
-                "Content-type": "application/json"
+                "Content-type": "application/json",
+                "Authorization": localStorage.token
             },
             body: JSON.stringify({
                 trail_id: id, 
@@ -66,14 +68,18 @@ function TrailMainPage(){
 
     if (isLoaded) {
 
-        let trailIds = trailList.map((trailObj) => trailObj.trail_id)
+        const trailIds = trailList.map((trailObj) => trailObj.trail_id)
+        const coordinates = {
+            latitude: trail.latitude,
+            longitude: trail.longitude
+        }
 
     return(
         <div>
             <div className="trailComponents">
                 <h2>{trail.name} - {trail.location} ({trail.state})</h2>
                 {trailIds.includes(parseInt(id)) ? null : <Button onClick={() => addFavorite()}>{favorited ? "Added" : "Add to favorites"}</Button>}
-                {/* <TrailCarousel photos={photos}/> */}
+                <TrailCarousel photos={photos}/>
                 <AddPhotoForm />
                 <Button onClick={() => history.push(`/trail/${id}/photos`)}>See all photos</Button>
                 <div className="trailstats">
@@ -83,6 +89,7 @@ function TrailMainPage(){
                     <h4>Elevation Gain: {trail.elevation_gain} ft</h4>
                 </div>
             </div>
+            <TrailMap coordinates={coordinates}/>
             <TrailReviews reviews={reviews} onNewReview={handleNewReview} onDeleteReview={handleReviewDelete}/>
         </div>
     )}

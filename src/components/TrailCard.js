@@ -22,7 +22,8 @@ function TrailCard({trail}){
         fetch("http://localhost:3000/trail_lists", {
             method: "POST",
             headers: {
-                "Content-type": "application/json"
+                "Content-type": "application/json",
+                "Authorization": localStorage.token
             },
             body: JSON.stringify({
                 trail_id: id, 
@@ -66,10 +67,14 @@ function TrailCard({trail}){
         paddingBottom: '0.5rem'
 
     }
+
+    let cardImage = {
+        maxHeight: '16rem',
+    }
     return(
         <div>
             <Card style={cardStyle}>
-                {photos.length > 0 ? <Card.Img variant="top" src={photos[0].img_link} alt={photos[0].title}/> : null}
+                {photos.length > 0 ? <Card.Img style={cardImage} variant="top" src={photos[0].img_link} alt={photos[0].title}/> : null}
                 <Card.Body></Card.Body>
                 <Card.Title className="mainTrailTitle" onClick={() => history.push(`/trail/${id}`)}>{name}</Card.Title>
                 <Card.Subtitle>{location}</Card.Subtitle>

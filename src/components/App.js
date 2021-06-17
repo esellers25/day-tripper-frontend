@@ -47,7 +47,7 @@ function App() {
 
   h1 {
     font-family: 'Caveat', cursive;
-    font-size: 7em;
+    font-size: 6em;
     cursor: pointer;
     text-align: center;
   }

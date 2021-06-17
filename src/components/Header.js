@@ -25,10 +25,10 @@ function Header(){
             <h1>Day Tripper</h1>
             <Navbar>
                 <Nav id="navbar" className="ml-auto">
-                    {username !== "" ? <Nav.Link href="/login" onClick={logOut}>LogOut</Nav.Link> : <Nav.Link href="/login">Sign In</Nav.Link>}
-                    {username !== "" ? <Nav.Link href={`/user/${id}`}>My Profile</Nav.Link> : null}
                     <Nav.Link href="/home">Browse Trails</Nav.Link>
                     <Nav.Link href="/addtrail">Add a Trail</Nav.Link>
+                    {username !== "" ? <Nav.Link href={`/user/${id}`}>My Profile</Nav.Link> : null}
+                    {username !== "" ? <Nav.Link href="/login" onClick={logOut}>LogOut</Nav.Link> : <Nav.Link href="/login">Sign In</Nav.Link>}
                 </Nav>
             </Navbar>
             

@@ -35,7 +35,11 @@ function FavList(){
 
     function handleTrailDelete(passedId){
         fetch(`http://localhost:3000/trail_lists/${passedId}`, {
-            method: "DELETE"
+            method: "DELETE",
+            headers: {
+                "Content-type": "application/json",
+                "Authorization": localStorage.token
+            }
         })
         .then(r => r.json())
         .then(deletedTrail => {

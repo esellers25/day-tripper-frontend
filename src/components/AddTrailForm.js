@@ -32,7 +32,8 @@ function AddTrailForm(){
         fetch("http://localhost:3000/trails", {
             method: "POST", 
             headers: {
-                "Content-type" : "application/json"
+                "Content-type" : "application/json",
+                "Authorization": localStorage.token
             }, 
             body: JSON.stringify(formData)
         })
@@ -52,17 +53,19 @@ function AddTrailForm(){
                 <label htmlFor="state">State</label>
                 <input name="state" type="text" value={formData.state} onChange={handleChange}></input>
                 <label htmlFor="length">Length in miles</label>
-                <input name="length" type="number" step="0.1" value={formData.length} onChange={handleChange}></input>
+                <input name="length" type="number" step="any" value={formData.length} onChange={handleChange}></input>
                 <label htmlFor="difficulty">Difficulty</label>
                 <select name="difficulty" value={formData.difficulty} onChange={handleChange}>
+                    <option value="" disabled selected>Select</option>
                     <option value="hard">Hard</option>
                     <option value="moderate">Moderate</option>
                     <option value="easy">Easy</option>
                 </select>
-                <label htmlFor="elevation">Elevation Gain in feet</label>
-                <input name="elevation" type="number" value={formData.elevation_gain} onChange={handleChange}></input>
-                <label htmlFor="route">Route Type</label>
-                <select name="route" value={formData.route_type} onChange={handleChange}>
+                <label htmlFor="elevation_gain">Elevation Gain in feet</label>
+                <input name="elevation_gain" type="number" step="any" value={formData.elevation_gain} onChange={handleChange}></input>
+                <label htmlFor="route_type">Route Type</label>
+                <select name="route_type" value={formData.route_type} onChange={handleChange}>
+                    <option value="" disabled selected>Select</option>
                     <option value="Loop">Loop</option>
                     <option value="Out and Back">Out and Back</option>
                     <option value="Point to Point">Point to Point</option>
