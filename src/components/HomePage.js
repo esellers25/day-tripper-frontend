@@ -81,21 +81,23 @@ function HomePage(){
 
         
     return(
-        <div className="trailsHomeContainer">
-            <h2>All Hiking Trails</h2>
-            <Filter onStateChange={handleStateChange}
-            onDifficultyChange={handleDifficultyChange}
-            onLengthChange={handleLengthChange}
-            states={states}
-            onMapView={handleMapView}
-            mapView={mapView}
-            />
-            {mapView ? <MapView trails={trailsByLength}/> : null}
-            {mapView? null: 
-            <div className="trailsHome">
-            <TrailList trails={trailsByLength}/>
-            </div>}
-        </div>
+        <>
+            <h2 className="home">All Hiking Trails</h2>
+            <div className="trailsHomeContainer">
+                <Filter onStateChange={handleStateChange}
+                onDifficultyChange={handleDifficultyChange}
+                onLengthChange={handleLengthChange}
+                states={states}
+                onMapView={handleMapView}
+                mapView={mapView}
+                />
+            </div>
+                {mapView ? <MapView trails={trailsByLength}/> : null}
+                {mapView? null: 
+                <div className="trailsHome">
+                <TrailList trails={trailsByLength}/>
+                </div>}
+        </>
     )
 }
 

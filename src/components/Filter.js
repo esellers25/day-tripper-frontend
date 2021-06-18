@@ -1,4 +1,4 @@
-import { MapButton, Button } from "./style"
+import { MapButton, ResetButton } from "./style"
 
 function Filter({onStateChange, onLengthChange, onDifficultyChange, states, onMapView, mapView}){
     
@@ -24,11 +24,9 @@ function Filter({onStateChange, onLengthChange, onDifficultyChange, states, onMa
 
     return(
         <div className="filterNav">
-            {/* <div className="mapButton"> */}
             <MapButton onClick={onMapView}>{mapView ? "List View" : "Map View"}</MapButton>
-            {/* </div> */}
             <div className="filterBar">
-                <h4>Filter</h4>
+                <h5>Filter</h5>
                 <label htmlFor="state-filter">State</label>
                 <select className="filterInputs" name="state-filter" onChange={handleStateChange}>
                     <option value="All">All</option>
@@ -48,7 +46,7 @@ function Filter({onStateChange, onLengthChange, onDifficultyChange, states, onMa
                     <option value="4">2-4 Miles</option>
                     <option value="4.1">Over 4 miles</option>
                 </select>
-                <Button onClick={resetFilters}>Reset</Button>
+                <ResetButton onClick={resetFilters}>Reset</ResetButton>
             </div>
         </div>
     )

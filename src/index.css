@@ -13,7 +13,7 @@ code {
 }
 
 .bodynohead {
-  margin: 0% 7% 5% 7%;
+  margin: 1% 7% 5% 7%;
 }
 
 /* ******** Filter Page ********* */
@@ -22,15 +22,15 @@ code {
   text-align: left;
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: baseline;
   justify-content: space-evenly;
   align-content: flex-start;
   margin-left: auto;
   margin-right: auto;
   /* padding-top: 20px; */
   /* max-height: 350px; */
-  width: 70%;
-  height: 55px;
+  width: 75%;
+  height: 58px;
   background-color: white;
   padding: 0.4rem;
   border-radius: 3px;
@@ -70,12 +70,13 @@ code {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-top: 50px;
+  margin-top: 25px;
 }
 
-.trailsHomeContainer h2 {
-  text-align: center;
-  margin: 15px, 0, 15px, 0;
+.trailsHomeContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
 }
 
 
@@ -85,6 +86,10 @@ code {
   padding: 0;
 }
 
+.home {
+  text-align: center;
+  margin-bottom: 15px;
+}
 
 
 /* ******** Individual Trail Page ********* */

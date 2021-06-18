@@ -3,7 +3,7 @@ import {useHistory} from 'react-router-dom'
 import {useSelector} from 'react-redux'
 import {SmallButton} from './style'
 import Card from 'react-bootstrap/Card'
-import TrailModal from './TrailModal'
+import TrailModal from './TrailModal';
 
 function TrailCard({trail}){
     

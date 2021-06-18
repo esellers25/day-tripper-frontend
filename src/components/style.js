@@ -14,6 +14,14 @@ border-radius: 3px;
 }
 `;
 
+export const ResetButton = styled(Button)`
+height: 25px;
+font-size: 0.9em;
+width: 100px;
+padding: 0;
+margin: 0.2em;
+`;
+
 export const SmallButton = styled(Button)`
 width: 200px; 
 margin-top: ${props => props.secondary ? "0.4em": '1em' }
