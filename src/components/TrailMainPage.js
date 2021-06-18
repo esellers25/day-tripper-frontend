@@ -6,6 +6,7 @@ import TrailReviews from './TrailReviews';
 import AddPhotoForm from './AddPhotoForm';
 import {Button} from './style';
 import TrailMap from './TrailMap';
+import ButtonGroup from 'react-bootstrap/ButtonGroup'
 
 function TrailMainPage(){
     
@@ -80,8 +81,10 @@ function TrailMainPage(){
                 <h2>{trail.name} - {trail.location} ({trail.state})</h2>
                 {trailIds.includes(parseInt(id)) ? null : <Button onClick={() => addFavorite()}>{favorited ? "Added" : "Add to favorites"}</Button>}
                 <TrailCarousel photos={photos}/>
-                <AddPhotoForm />
-                <Button onClick={() => history.push(`/trail/${id}/photos`)}>See all photos</Button>
+                <ButtonGroup>
+                    <Button onClick={() => history.push(`/trail/${id}/photos`)}>See all photos</Button>
+                    <AddPhotoForm />
+                </ButtonGroup>
                 <div className="trailstats">
                     <h4>Route Type: {trail.route_type}</h4>
                     <h4>Difficulty: {trail.difficulty}</h4>

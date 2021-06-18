@@ -47,9 +47,11 @@ function App() {
 
   h1 {
     font-family: 'Caveat', cursive;
-    font-size: 6em;
+    font-size: 4.6em;
     cursor: pointer;
     text-align: center;
+    margin-bottom: 10px;
+   
   }
 
   h1:hover {
@@ -59,7 +61,7 @@ function App() {
 
   h2 {
     font-family: 'Caveat', cursive;
-    font-size: 4em;
+    font-size: 3.2em;
     padding: 10px;
     padding-bottom: 20px;
   }

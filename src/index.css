@@ -12,6 +12,10 @@ code {
     monospace;
 }
 
+.bodynohead {
+  margin: 0% 7% 5% 7%;
+}
+
 /* ******** Filter Page ********* */
 
 .filterBar {
@@ -76,26 +80,38 @@ code {
 /* ******** Individual Trail Page ********* */
 
 
+.trailstats {
+  display:flex; 
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.trailComponents h2 {
+  text-align: center;
+}
+
 .carousel {
-  width: 1100px;
-  height: 700px;
+  width: 900px;
+  height: 500px;
 }
 
 .carousel .item {
-  max-height: 700px;
+  max-height: 500px;
 }
 
 .carouselContainer {
-  margin-bottom: 15px;
+  margin-bottom: 50px;
   margin-top: 15px;
 }
 
 /* ******** Header ********* */
 
-
 .header {
   background-color: #bfd7e8;
-  padding-top: 20px;
+  padding-top: 15px;
   padding-right: 20px;
   margin-left: 0px;
 }
@@ -104,11 +120,11 @@ code {
   margin-top: 5px;
   margin-bottom: 5px;
   border-radius: 4%;
-  padding: 0.2rem;
+  padding: 0rem;
 }
 
 .navbar a {
-  font-size: 22px;
+  font-size: 18px;
 }
 
 .navbar a:hover {
@@ -116,24 +132,58 @@ code {
   border-radius: 3px;
 }
 
-.navbar.navbar-nav {
-  padding: 5px, 5px, 5px, 0 
+.logo {
+  height: 100px;
+  width: auto;
+  border-radius: 50%;
+  opacity: 50%;
+  margin-left: 15px;
+  margin-bottom: 17px;
 }
-
-/* ******** Main Trail Page ********* */
-
-.trailstats {
-  display:flex; 
+.brandelements {
+  display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
-.trailComponents h2 {
-  text-align: center;
-}
-/* ******** Edit Profile ********* */
+/* ******** Profile ********* */
 
 .editcontainer {
+  text-align: center;
+}
+
+.profiledetails {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.profilestats {
+  background-color: rgb(49, 165, 126);
+  padding: 1rem;
+  border-radius: 6px;
+  width: 650px;
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+}
+
+.profilepicture {
+  width: auto;
+  height: 300px;
+  margin: 10px;
+  border-radius: 5px;
+}
+
+.profilelist {
+  display: flex; 
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.profilepage h2 {
   text-align: center;
 }
 
@@ -156,23 +206,17 @@ code {
   
 }
 
-.bodynohead {
-  margin: 0% 7% 5% 7%;
-}
 /* ******** Map ********* */
-
-
 
 .google-map {
   width: 100%;
   height: 60vh;
+  margin-bottom: 50px;
 }
 
 @media screen and (min-width: 799px) {
   .google-map {
     height: 60vh;
   }
-
-  
 
 }

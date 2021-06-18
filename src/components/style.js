@@ -4,8 +4,8 @@ export const Button = styled.button`
 background: ${props => props.secondary ? "#1b4c0f" : "white"};
 color: ${props => props.secondary ? "white" : "##1b4c0f"};
 font-size: 1em;
-margin: ${props => props.secondary ? "0.25em": '1em' };
-padding: ${props => props.secondary ? "0.25em 0.25em": "0.25em 1em"};
+margin: ${props => props.secondary ? "0.25em": '0.5em' };
+padding: ${props => props.secondary ? "0.25em 0.25em": "0.25em 0.5em"};
 border: 3px solid ##1b4c0f;
 border-radius: 3px;
 &:hover {
@@ -28,8 +28,9 @@ text-align: left;
   margin-right: auto;
   width: 350px;
   height: 450px;
+  border-radius: 3px;
   background-color: rgb(240, 207, 135);
-  padding: 0.5rem;
+  padding: 0.8rem;
 `;
 
 export const TrailForm = styled(Form)`

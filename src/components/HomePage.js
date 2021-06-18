@@ -22,9 +22,13 @@ function HomePage(){
 
     if (!isLoaded) {
         return (
-            <p>Loading!</p>
+            <p>Loading! </p>
         )
     }
+
+    const unique = (x, i, a) => a.indexOf(x) == i;
+    const allStates = trails.map((trail) => trail.state)
+    const states = allStates.filter(unique)
 
     const trailsByState = trails.filter((trail) => {
         if (selectedState === "All") {
@@ -77,6 +81,7 @@ function HomePage(){
             <Filter onStateChange={handleStateChange}
             onDifficultyChange={handleDifficultyChange}
             onLengthChange={handleLengthChange}
+            states={states}
             />
             <TrailList trails={trailsByLength}/>
             </div>

@@ -1,4 +1,4 @@
-function Filter({onStateChange, onLengthChange, onDifficultyChange}){
+function Filter({onStateChange, onLengthChange, onDifficultyChange, states}){
     
     function handleStateChange(e){
         onStateChange(e.target.value)
@@ -12,7 +12,8 @@ function Filter({onStateChange, onLengthChange, onDifficultyChange}){
         onLengthChange(e.target.value)
     }
     
-    
+    const stateOptions = states.map((state) => <option value={state}>{state}</option>)
+
     return(
         <div className="filterNav">
             <div>
@@ -22,10 +23,11 @@ function Filter({onStateChange, onLengthChange, onDifficultyChange}){
                 <label htmlFor="state-filter">State</label>
                 <select className="filterInputs" name="state-filter" onChange={handleStateChange}>
                     <option value="All">All</option>
-                    <option value="ME">Maine</option>
+                    {stateOptions}
+                    {/* <option value="ME">Maine</option>
                     <option value="NH">New Hampshire</option>
                     <option value="NY">New York</option>
-                    <option value="VT">Vermont</option>
+                    <option value="VT">Vermont</option> */}
                 </select>
                 <label  htmlFor="difficulty-filter">Difficulty Level</label>
                 <select className="filterInputs" name="difficulty-filter" onChange={handleDifficultyChange}>

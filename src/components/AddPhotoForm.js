@@ -1,7 +1,7 @@
 import {useState} from 'react'
 import {useSelector} from 'react-redux'
 import {useParams} from 'react-router-dom'
-import {Button} from './style'
+import {Button, ButtonGroup} from './style'
 
 function AddPhotoForm(){
 
@@ -51,7 +51,7 @@ function AddPhotoForm(){
 
 
     return(
-        <div>
+        <>
             <Button onClick={() => handlePhotoDisplay()}>Upload a photo</Button>
                 <p>{message}</p>
                 {photoDisplay ? 
@@ -65,7 +65,7 @@ function AddPhotoForm(){
                     </form>
                 </div> : 
                 null}
-        </div>
+        </>
     )
 }
 
