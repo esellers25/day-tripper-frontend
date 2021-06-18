@@ -18,7 +18,7 @@ function TrailPhotos(){
             setPhotos(resp.photos)
             setIsLoaded(true)
         })
-    }, [])
+    }, [id])
 
 
     let divStyle = {

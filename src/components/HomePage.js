@@ -1,12 +1,14 @@
 
 import {useEffect, useState} from 'react'
 import Filter from './Filter'
+import MapView from './MapView'
 import TrailList from './TrailList'
 
 function HomePage(){
 
     const [trails, setTrails] = useState([])
     const [isLoaded, setIsLoaded] = useState(false)
+    const [mapView, setMapView] = useState(false)
     const [selectedLength, setSelectedLength] = useState("All")
     const [selectedDifficulty, setSelectedDifficulty] = useState("All")
     const [selectedState, setSelectedState] = useState("All")
@@ -73,18 +75,26 @@ function HomePage(){
         setSelectedLength(selectedLength)
     }
 
+    function handleMapView(){
+        setMapView(!mapView)
+    }
+
         
     return(
         <div className="trailsHomeContainer">
             <h2>All Hiking Trails</h2>
-            <div className="trailsHome">
             <Filter onStateChange={handleStateChange}
             onDifficultyChange={handleDifficultyChange}
             onLengthChange={handleLengthChange}
             states={states}
+            onMapView={handleMapView}
+            mapView={mapView}
             />
+            {mapView ? <MapView trails={trailsByLength}/> : null}
+            {mapView? null: 
+            <div className="trailsHome">
             <TrailList trails={trailsByLength}/>
-            </div>
+            </div>}
         </div>
     )
 }

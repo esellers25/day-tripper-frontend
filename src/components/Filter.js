@@ -1,4 +1,6 @@
-function Filter({onStateChange, onLengthChange, onDifficultyChange, states}){
+import { MapButton, Button } from "./style"
+
+function Filter({onStateChange, onLengthChange, onDifficultyChange, states, onMapView, mapView}){
     
     function handleStateChange(e){
         onStateChange(e.target.value)
@@ -11,23 +13,26 @@ function Filter({onStateChange, onLengthChange, onDifficultyChange, states}){
     function handleLengthChange(e){
         onLengthChange(e.target.value)
     }
+
+    function resetFilters(){
+        onStateChange("All")
+        onDifficultyChange("All")
+        onLengthChange("All")
+    }
     
-    const stateOptions = states.map((state) => <option value={state}>{state}</option>)
+    const stateOptions = states.map((state) => <option key={state} value={state}>{state}</option>)
 
     return(
         <div className="filterNav">
-            <div>
-            </div>
+            {/* <div className="mapButton"> */}
+            <MapButton onClick={onMapView}>{mapView ? "List View" : "Map View"}</MapButton>
+            {/* </div> */}
             <div className="filterBar">
-                <h4>Filter Trails</h4>
+                <h4>Filter</h4>
                 <label htmlFor="state-filter">State</label>
                 <select className="filterInputs" name="state-filter" onChange={handleStateChange}>
                     <option value="All">All</option>
                     {stateOptions}
-                    {/* <option value="ME">Maine</option>
-                    <option value="NH">New Hampshire</option>
-                    <option value="NY">New York</option>
-                    <option value="VT">Vermont</option> */}
                 </select>
                 <label  htmlFor="difficulty-filter">Difficulty Level</label>
                 <select className="filterInputs" name="difficulty-filter" onChange={handleDifficultyChange}>
@@ -43,6 +48,7 @@ function Filter({onStateChange, onLengthChange, onDifficultyChange, states}){
                     <option value="4">2-4 Miles</option>
                     <option value="4.1">Over 4 miles</option>
                 </select>
+                <Button onClick={resetFilters}>Reset</Button>
             </div>
         </div>
     )

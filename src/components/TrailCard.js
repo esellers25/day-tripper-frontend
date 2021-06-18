@@ -14,7 +14,6 @@ function TrailCard({trail}){
     const history = useHistory()
     const [modalShow, setModalShow] = useState(false)
     const [favorited, setFavorited] = useState(false)
-    const [disabled, setDisabled] = useState(false)
 
     let trailIds = trailList.map((trailObj) => trailObj.trail_id)
 
@@ -33,17 +32,7 @@ function TrailCard({trail}){
         .then(r => r.json())
         .then(resp => {
             setFavorited(true) 
-            setDisabled(true)
         })
-    }
-
-    let cardstyle = {
-        width: '20rem',
-        height: '25rem',
-        textAlign: 'center',
-        alignItems: 'center',
-        marginBottom: '28px',
-        paddingBottom: '0.5rem'
     }
 
     function favButton(userId){

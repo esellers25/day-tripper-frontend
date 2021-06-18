@@ -21,17 +21,18 @@ code {
 .filterBar {
   text-align: left;
   display: flex;
-  flex-direction: column;
-  align-content: center;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  align-content: flex-start;
   margin-left: auto;
   margin-right: auto;
-  padding-top: 20px;
-  max-height: 350px;
-  width: 215px;
-  height: 275px;
+  /* padding-top: 20px; */
+  /* max-height: 350px; */
+  width: 70%;
+  height: 55px;
   background-color: white;
-  padding: 0.5rem;
-  padding-bottom: 1rem;
+  padding: 0.4rem;
   border-radius: 3px;
   position: sticky;
   top: 0;
@@ -40,9 +41,15 @@ code {
 
 .filterNav {
   text-align: center;
-  width: 210px;
-  display: inline-block;
-  margin-right: 50px;
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-right: 40px;
+  /* padding-left: 100px; */
+  margin-left: 40px;
+  margin-bottom: 30px;
 }
 
 .filterBar h4 {
@@ -56,11 +63,14 @@ code {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
+  margin-left: 150px;
 }
 
 .trailsHome {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  margin-top: 50px;
 }
 
 .trailsHomeContainer h2 {
@@ -140,6 +150,7 @@ code {
   margin-left: 15px;
   margin-bottom: 17px;
 }
+
 .brandelements {
   display: flex;
   flex-direction: row;
@@ -202,8 +213,7 @@ code {
 
 .favCards {
   display: flex;
-  /* flex-direction: row; */
-  
+  flex-direction: row;
 }
 
 /* ******** Map ********* */
@@ -219,4 +229,27 @@ code {
     height: 60vh;
   }
 
+}
+
+.map {
+  height: 65vh;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.google-map-main {
+  width: 100%;
+  height: 50vh;
+  margin-bottom: 50px;
+
+}
+
+@media screen and (min-width: 799px) {
+  .google-map-main {
+    height: 50vh;
+  }
+}
+
+.silly {
+  height: 50px;
 }

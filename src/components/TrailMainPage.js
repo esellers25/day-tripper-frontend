@@ -31,7 +31,7 @@ function TrailMainPage(){
             setReviews(resp.reviews)
             setIsLoaded(true)
         })
-    }, [])
+    }, [id])
     
     const trail = useSelector((state) => state.trailReducer.trail)
  

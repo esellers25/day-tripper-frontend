@@ -68,6 +68,12 @@ function App() {
   h3 {
     font-family: 'Open Sans', sans-serif;
   }
+  h4 {
+    font-family: 'Open Sans', sans-serif;
+  }
+  h5 {
+    font-family: 'Open Sans', sans-serif;
+  }
   `
   
   return (

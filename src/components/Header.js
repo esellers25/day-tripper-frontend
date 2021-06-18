@@ -17,18 +17,11 @@ function Header(){
         history.push("/login")
     }
 
-    // let photoStyle = {
-    //     width: 'auto',
-    //     height: '50px',
-    //     margin: '2px',
-    // }
-
-
     return(
         <div className="header">
             <div className="brandelements">
                 <div className="brandelements">
-                <img className="logo" src={logo}/>
+                <img className="logo" src={logo} alt="Day Tripper"/>
                 <h1>Day Tripper</h1>
                 </div>
                 <Navbar>

@@ -3,7 +3,7 @@ import {useRef, useCallback} from 'react';
 
 
 function TrailMap({coordinates}){
-    console.log(coordinates)
+   
 
     const containerStyle = {
         width: '100%',

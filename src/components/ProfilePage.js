@@ -56,17 +56,13 @@ function ProfilePage(){
         })
     }
 
-    let photoStyle = {
-       
-    }
-
     if (pageLoaded) {
     return(
         <div className="profilepage">
             <h2>User Details</h2>
             <div className="profiledetails">
                 <div className="profilestats">
-                    <img className="profilepicture" src={profilePic}/><br/>
+                    <img className="profilepicture" src={profilePic} alt={name}/><br/>
                     <div className="profilelist">
                     <h2>{name}</h2>
                     <h5>Username : {username}</h5>

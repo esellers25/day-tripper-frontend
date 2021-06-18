@@ -1,7 +1,7 @@
 import {useState} from 'react'
 import {useSelector} from 'react-redux'
 import {useParams} from 'react-router-dom'
-import {Button, ButtonGroup} from './style'
+import {Button} from './style'
 
 function AddPhotoForm(){
 
