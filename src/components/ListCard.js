@@ -1,12 +1,14 @@
 import Card from 'react-bootstrap/Card'
+import {useHistory} from 'react-router-dom'
 
 function ListCard({trailObj, onTrailDelete}){
     const {trail, trail_list} = trailObj
+    const history = useHistory()
     
     return(
-        <div>
+        <div className="favList">
             <Card>
-                <Card.Title>{trail.name}</Card.Title>
+                <Card.Title className="cardtitle" onClick={() => history.push(`/trail/${trail.id}`)}>{trail.name}</Card.Title>
                 <Card.Subtitle>{trail.location} ({trail.state})</Card.Subtitle>
                 <Card.Text>
                     Difficulty: {trail.difficulty}<br/>

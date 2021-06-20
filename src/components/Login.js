@@ -1,6 +1,7 @@
 import {useHistory} from "react-router-dom";
 import {useState} from "react";
 import {useDispatch} from 'react-redux'; 
+import {SmallForm} from './style'
 
 function Login(){
 
@@ -43,15 +44,15 @@ function Login(){
         <div className="login-form">
             <h2>Login</h2>
             <p>{errorMessage}</p>
-            <form onSubmit={(e) => logIn(e)}>
+            <SmallForm onSubmit={(e) => logIn(e)}>
                 <label>Username</label>
                 <input name="username" type="text" value={username} onChange={e => setUsername(e.target.value)}/>
                 <label>Password</label>
-                <input name="password" type="password" value={password} onChange={e => setPassword(e.target.value)}/>
-                <input type="submit"/>
-            </form>
-            <h4>Need an account?</h4>
-            <button onClick={handleSignInClick}>Sign up for an account</button>
+                <input name="password" type="password" value={password} onChange={e => setPassword(e.target.value)}/><br/>
+                <input type="submit"/><br/>
+                <h4>Need an account?</h4>
+                <button onClick={handleSignInClick}>Sign up for an account</button>
+            </SmallForm>
         </div>
     )
 }

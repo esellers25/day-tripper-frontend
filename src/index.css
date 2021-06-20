@@ -30,12 +30,12 @@ code {
   /* padding-top: 20px; */
   /* max-height: 350px; */
   width: 75%;
-  height: 58px;
+  height: 52px;
   background-color: white;
   padding: 0.4rem;
   border-radius: 3px;
-  position: sticky;
-  top: 0;
+  /* position: sticky;
+  top: 0; */
 }
 
 
@@ -50,6 +50,8 @@ code {
   /* padding-left: 100px; */
   margin-left: 40px;
   margin-bottom: 30px;
+  /* position: sticky;
+  top: 0; */
 }
 
 .filterBar h4 {
@@ -63,7 +65,7 @@ code {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin-left: 150px;
+  margin-left: 230px;
 }
 
 .trailsHome {
@@ -77,6 +79,9 @@ code {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
 
@@ -106,6 +111,7 @@ code {
 
 .trailComponents h2 {
   text-align: center;
+  margin-top: 20px;
 }
 
 .carousel {
@@ -140,6 +146,7 @@ code {
 
 .navbar a {
   font-size: 18px;
+  font-family: 'Asap Condensed', sans-serif;
 }
 
 .navbar a:hover {
@@ -148,12 +155,12 @@ code {
 }
 
 .logo {
-  height: 100px;
+  height: 82px;
   width: auto;
   border-radius: 50%;
   opacity: 50%;
-  margin-left: 15px;
-  margin-bottom: 17px;
+  margin-left: 20px;
+  margin-bottom: 20px;
 }
 
 .brandelements {
@@ -175,7 +182,7 @@ code {
 }
 
 .profilestats {
-  background-color: rgb(49, 165, 126);
+  background-color: rgb(17, 80, 59);
   padding: 1rem;
   border-radius: 6px;
   width: 650px;
@@ -197,6 +204,7 @@ code {
   justify-content: center;
   align-items: center;
   align-content: center;
+  color: white;
 }
 
 .profilepage h2 {
@@ -221,12 +229,16 @@ code {
   flex-direction: row;
 }
 
+.favoritesPage h2 {
+  text-align: center;
+}
+
 /* ******** Map ********* */
 
 .google-map {
   width: 100%;
   height: 60vh;
-  margin-bottom: 50px;
+  margin-bottom: 10px;
 }
 
 @media screen and (min-width: 799px) {
@@ -252,9 +264,50 @@ code {
 @media screen and (min-width: 799px) {
   .google-map-main {
     height: 50vh;
+    margin-bottom: 30px;
   }
 }
 
 .silly {
   height: 50px;
+}
+
+.login-form h2 {
+  text-align: center;
+}
+
+.cardtitle:hover {
+  color: blue;
+  cursor: pointer;
+}
+
+.ui.comments .comment>.content {
+  background-color: rgb(235, 232, 232);
+  width: 350px;
+  padding: 0.8rem;
+  text-align: left;
+}
+
+#author {
+  font-size: 1.3em;
+}
+
+#author:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+#metadata {
+  font-size: 1.1em;
+  color: rgb(109, 107, 107);
+}
+
+#reviewheader {
+  width: 450px;
+}
+
+#commentblock {
+  background-color: rgb(235, 232, 232);
+  width: 375px;
+  padding: 0.5rem;
 }

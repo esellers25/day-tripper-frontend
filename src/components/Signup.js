@@ -1,6 +1,7 @@
 import {useHistory} from "react-router-dom";
 import {useDispatch} from 'react-redux'; 
 import {useState} from 'react'; 
+import {Form} from './style'
 
 function Signup(){
 
@@ -41,7 +42,7 @@ function Signup(){
         <div className="login-form">
         <h2>Signup for an Account</h2>
         <p>{errorMessage}</p>
-        <form onSubmit={(e) => signUp(e)}>
+        <Form onSubmit={(e) => signUp(e)}>
             <label htmlFor="name">Name</label>
             <input name="name" type="text"/>
             <label htmlFor="username">Username</label>
@@ -53,11 +54,11 @@ function Signup(){
             <label htmlFor="location">Location</label>
             <input name="location" type="text"/>
             <label htmlFor="password">Password</label>
-            <input name="password" type="password"/>
-            <input type="submit"/>
-        </form><br></br>
-        <h4>Already have an account?</h4>
-        <button onClick={handleLoginClick}>Login</button>
+            <input name="password" type="password"/><br/>
+            <input type="submit"/><br/>
+            <h4>Already have an account?</h4>
+            <button onClick={handleLoginClick}>Login</button>
+        </Form><br></br>
     </div>
     )
 }

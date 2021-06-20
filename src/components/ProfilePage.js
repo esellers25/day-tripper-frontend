@@ -65,10 +65,10 @@ function ProfilePage(){
                     <img className="profilepicture" src={profilePic} alt={name}/><br/>
                     <div className="profilelist">
                     <h2>{name}</h2>
-                    <h5>Username : {username}</h5>
-                    <p>{location}</p>
+                    <h4>Username : {username}</h4>
+                    <h4>{location}</h4>
                     <ButtonGroup vertical>
-                        <Button as='a' href={`mailto:${email}`}>Email</Button><br/>
+                        {/* <Button as='a' href={`mailto:${email}`}>Email</Button><br/> */}
                         {currentUserId === parseInt(id) ? <Button onClick={handleEditForm}>Change my photo</Button> : null}
                         {editForm ? 
                         <form onSubmit={handlePicSubmit}>

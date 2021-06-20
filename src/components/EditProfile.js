@@ -41,7 +41,6 @@ function EditProfile(){
         })
         .then(r => r.json())
         .then(resp => {
-            console.log(resp)
             dispatch({type: "edit_profile_info", payload: resp})
             history.push(`/user/${id}`)
         })
@@ -60,7 +59,7 @@ function EditProfile(){
                 <label htmlFor="location">Location</label>
                 <input type="text" name="location" value={formInfo.location} onChange={handleChange}></input>
                 <label htmlFor="password">Password</label>
-                <input type="password" name="password" value={formInfo.password} onChange={handleChange}></input>
+                <input type="password" name="password" value={formInfo.password} onChange={handleChange}></input><br/>
                 <Button type="submit">Save changes</Button>
             </Form>
         </div>

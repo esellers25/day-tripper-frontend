@@ -50,14 +50,12 @@ function FavList(){
 
     
     return(
-        <div>
+        <div className="favoritesPage">
             <h2>{list.title}</h2>
-            <div  className="trailsHome">
-            <div className="favList">
+            <div className="favCards">
                     <CardDeck style={{width: '18rem'}}>
                         {myTrails}
                     </CardDeck>
-            </div>
             </div>
         </div>
     )

@@ -42,15 +42,15 @@ function App() {
  
   const GlobalStyle = createGlobalStyle`
   body {
-    background-color: #efe2ba;
+    background-color: #f5ecd0;
   }
 
   h1 {
-    font-family: 'Caveat', cursive;
+    font-family: 'Asap Condensed', sans-serif;
     font-size: 4.6em;
     cursor: pointer;
     text-align: center;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
    
   }
 
@@ -66,13 +66,14 @@ function App() {
     padding-bottom: 20px;
   }
   h3 {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Asap Condensed', sans-serif;
+    font-size: 2.9em;
   }
   h4 {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Asap Condensed', sans-serif;
   }
   h5 {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Asap Condensed', sans-serif;
   }
   `
   

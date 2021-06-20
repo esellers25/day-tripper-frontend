@@ -2,6 +2,7 @@ import {useHistory, useParams} from 'react-router-dom'
 import {useState} from 'react'
 import {useSelector} from 'react-redux'
 import {Button} from './style'
+import { Comment, Header } from 'semantic-ui-react'
 
 function TrailReviews({reviews, onNewReview, onDeleteReview}){
     let today = new Date().toISOString().substr(0, 10);
@@ -63,21 +64,27 @@ function TrailReviews({reviews, onNewReview, onDeleteReview}){
     }
 
     const reviewList = reviews.map((review) =>
-        <div key={review.id}>
-            <p onClick={() => history.push(`/user/${review.user_id}`)}>{review.review_author}</p>
-            <p>{review.date}</p>
-            <p>{review.difficulty}</p>
-            <p>{review.comment}</p>
-            <p>{review.rating}</p>
+        <Comment id="commentblock" key={review.id}>
+            <Comment.Avatar src={review.avatar}/>
+            <Comment.Content id="reviewcontent">
+                <Comment.Author id="author" onClick={() => history.push(`/user/${review.user_id}`)}>{review.review_author}</Comment.Author>
+                <Comment.Metadata id="metadata">
+                    <div>{review.date}</div>
+                    <div>Difficulty: {review.difficulty}</div>
+                    <div>Rating: {review.rating}</div>
+                </Comment.Metadata>
+                <Comment.Text>{review.comment}</Comment.Text>
             {userId === review.user_id ? <Button onClick={() => onReviewDelete(review.id)}>delete</Button> : null}
-        </div>
+            </Comment.Content>
+        </Comment>
         )
     
     return(
         <>
-        <div>
+        <Comment.Group>
+            <Header id="reviewheader" as='h3' dividing>Reviews</Header>
         {reviewList}
-        </div>
+        </Comment.Group>
         <div>
             <h3>Add a review</h3>
             {localStorage.token ? <Button onClick={handleFormShow}>Review</Button> : "Log in to leave a review!"}

@@ -26,7 +26,6 @@ function TrailPhotos(){
         flexDirection: 'row',
         flexWrap: 'wrap', 
         alignItems: 'space-between'
-        // height: '1500px'
     }
     
     if(isLoaded) {

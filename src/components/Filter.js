@@ -26,7 +26,7 @@ function Filter({onStateChange, onLengthChange, onDifficultyChange, states, onMa
         <div className="filterNav">
             <MapButton onClick={onMapView}>{mapView ? "List View" : "Map View"}</MapButton>
             <div className="filterBar">
-                <h5>Filter</h5>
+                <h4>Filter</h4>
                 <label htmlFor="state-filter">State</label>
                 <select className="filterInputs" name="state-filter" onChange={handleStateChange}>
                     <option value="All">All</option>

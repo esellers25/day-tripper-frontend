@@ -7,7 +7,7 @@ function MapView({trails}){
 
     const containerStyle = {
         width: '100%',
-        height: '550px'
+        height: '500px'
       };
 
     const center = {
@@ -30,8 +30,6 @@ function MapView({trails}){
     const onMapLoad = useCallback((map) => {
         mapRef.current = map
     }, [])
-
-    const markers = trails.map((trail) => <Marker key={trail.id} onClick={() => setSelectedTrail(trail)} position={{lat: trail.latitude, lng: trail.longitude}}/>)
       
     return (
         <div className="map">
