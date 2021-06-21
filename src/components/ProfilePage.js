@@ -25,9 +25,10 @@ function ProfilePage(){
     const name = useSelector((state) => state.profileReducer.name)
     const username = useSelector((state) => state.profileReducer.username)
     const location = useSelector((state) => state.profileReducer.location)
-    const email = useSelector((state) => state.profileReducer.email)
+    const bio = useSelector((state) => state.profileReducer.bio)
     const currentUserId = useSelector((state) => state.userReducer.id)
     const profilePic = useSelector((state) => state.profileReducer.profilePic)
+    
 
     function handleEditForm(e){
         setEditForm(!editForm)
@@ -67,6 +68,7 @@ function ProfilePage(){
                     <h2>{name}</h2>
                     <h4>Username : {username}</h4>
                     <h4>{location}</h4>
+                    <p>{bio}</p>
                     <ButtonGroup vertical>
                         {/* <Button as='a' href={`mailto:${email}`}>Email</Button><br/> */}
                         {currentUserId === parseInt(id) ? <Button onClick={handleEditForm}>Change my photo</Button> : null}
@@ -78,7 +80,7 @@ function ProfilePage(){
                         </form>
                         : null}
                         {currentUserId === parseInt(id) ? <Button onClick={() => history.push(`/user/${id}/edit`)}>Update my info</Button> : null}<br/>
-                        {currentUserId === parseInt(id) ? <Button onClick={() => history.push(`/user/${id}/lists`)}>See Favorited Trails</Button> : null}
+                        <Button onClick={() => history.push(`/user/${id}/lists`)}>See Favorited Trails</Button>
                     </ButtonGroup>
                     </div>
                 </div>

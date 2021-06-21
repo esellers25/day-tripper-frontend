@@ -80,9 +80,9 @@ function TrailReviews({reviews, onNewReview, onDeleteReview}){
         )
     
     return(
-        <>
+        <div>
         <Comment.Group>
-            <Header id="reviewheader" as='h3' dividing>Reviews</Header>
+            <Header id="reviewheader" as='h4' dividing>Reviews</Header>
         {reviewList}
         </Comment.Group>
         <div>
@@ -108,7 +108,7 @@ function TrailReviews({reviews, onNewReview, onDeleteReview}){
             </div> : 
             null}
         </div>
-        </>
+        </div>
     )
 }
 

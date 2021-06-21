@@ -276,6 +276,8 @@ code {
   text-align: center;
 }
 
+/* ******** Reviews ********* */
+
 .cardtitle:hover {
   color: blue;
   cursor: pointer;
@@ -310,4 +312,20 @@ code {
   background-color: rgb(235, 232, 232);
   width: 375px;
   padding: 0.5rem;
+}
+
+/* ******** Weather/Reviews ********* */
+
+#weatherReviews {
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.weatherCard {
+  /* flex-direction: row;
+  flex-wrap: wrap; */
+  width: 300px;
+  margin-left: 230px;
+  margin-right: 0;
 }

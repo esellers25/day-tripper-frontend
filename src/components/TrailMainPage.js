@@ -79,7 +79,7 @@ function TrailMainPage(){
     return(
         <div>
             <div className="trailComponents">
-                <h2>{trail.name} - {trail.location} ({trail.state})</h2>
+                <h2>{trail.name} - {trail.location}</h2>
                 {trailIds.includes(parseInt(id)) ? null : <Button onClick={() => addFavorite()}>{favorited ? "Added" : "Add to favorites"}</Button>}
                 {photos.length >= 3 ? <TrailCarousel photos={photos}/> : null}
                 <ButtonGroup>
@@ -94,8 +94,10 @@ function TrailMainPage(){
                 </div>
             </div>
             <TrailMap coordinates={coordinates}/>
-            <TrailWeather trail={trail}/>
-            <TrailReviews reviews={reviews} onNewReview={handleNewReview} onDeleteReview={handleReviewDelete}/>
+            <div id="weatherReviews">
+                <TrailReviews reviews={reviews} onNewReview={handleNewReview} onDeleteReview={handleReviewDelete}/>
+                <TrailWeather trail={trail}/>
+            </div>
         </div>
     )}
     else {

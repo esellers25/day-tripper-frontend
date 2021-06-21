@@ -11,11 +11,13 @@ function EditProfile(){
     const username = useSelector((state) => state.userReducer.username)
     const location = useSelector((state) => state.userReducer.location)
     const email = useSelector((state) => state.userReducer.email)
+    const bio = useSelector((state) => state.userReducer.bio)
     const [formInfo, setFormInfo] = useState({
         name: name,
         username: username,
         email: email,
         location: location,
+        bio: bio,
         password: ""
     })
     
@@ -54,6 +56,8 @@ function EditProfile(){
                 <input type="text" name="name" value={formInfo.name} onChange={handleChange}></input>
                 <label htmlFor="username" >Username</label>
                 <input type="text" name="username" value={formInfo.username} onChange={handleChange}></input>
+                <label htmlFor="bio" >Bio</label>
+                <input type="text" name="bio" value={formInfo.bio} onChange={handleChange}></input>
                 <label htmlFor="email" >Email</label>
                 <input type="text" name="email" value={formInfo.email} onChange={handleChange}></input>
                 <label htmlFor="location">Location</label>

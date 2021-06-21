@@ -11,6 +11,7 @@ let initialUserState = {
     profilePic: "",
     location: "",
     name: "",
+    bio: "",
     trailLists: []
 }
 
@@ -25,6 +26,7 @@ let userReducer = (state = initialUserState, action) => {
                 email: action.payload.user.email,
                 location: action.payload.user.location,
                 profilePic: action.payload.user.profile_picture,
+                bio: action.payload.user.bio,
                 name: action.payload.user.name,
                 lists: action.payload.user.lists,
                 trailLists: action.payload.user.lists[0].trail_lists 
@@ -36,6 +38,7 @@ let userReducer = (state = initialUserState, action) => {
                 token: action.payload.token,
                 id: action.payload.user.id,
                 email: action.payload.user.email,
+                bio: action.payload.user.bio,
                 location: action.payload.user.location,
                 profilePic: action.payload.user.profile_picture,
                 name: action.payload.user.name,
@@ -47,6 +50,7 @@ let userReducer = (state = initialUserState, action) => {
                 email: action.payload.email,
                 location: action.payload.location,
                 profilePic: action.payload.profile_picture,
+                bio: action.payload.bio,
                 name: action.payload.name,
                 username: action.payload.username
             }

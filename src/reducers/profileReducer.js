@@ -4,7 +4,8 @@ let initialProfileState = {
     email: "",
     profilePic: "",
     location: "",
-    name: ""
+    name: "",
+    bio: ""
 }
 
 let profileReducer = (state = initialProfileState, action) => {
@@ -17,7 +18,8 @@ let profileReducer = (state = initialProfileState, action) => {
                 email: action.payload.email,
                 location: action.payload.location,
                 profilePic: action.payload.profile_picture,
-                name: action.payload.name
+                name: action.payload.name,
+                bio: action.payload.bio
             }
         default: 
             return state

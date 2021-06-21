@@ -58,7 +58,7 @@ function TrailCard({trail}){
     }
 
     let cardImage = {
-        maxHeight: '16rem',
+        height: '15rem',
     }
     return(
         <div>
