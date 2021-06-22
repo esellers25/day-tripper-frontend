@@ -22,7 +22,7 @@ function Header(){
             <div className="brandelements">
                 <div className="brandelements">
                 <img className="logo" src={logo} alt="Day Tripper"/>
-                <h1>Day Tripper</h1>
+                <h1 onClick={() => history.push("/home")}>Day Tripper</h1>
                 </div>
                 <Navbar>
                     <Nav id="navbar" className="ml-auto">

@@ -10,8 +10,8 @@ function PhotoModal({photo}){
     const [modalShow, setModalShow] = useState(false)
 
     let photoStyle = {
-        width: '280px',
-        height: '210px',
+        width: 'auto',
+        height: '240px',
         margin: '10px',
         borderRadius: '4px'
     }
@@ -39,7 +39,7 @@ function PhotoModal({photo}){
                 <Container >
                     <Modal
                     show={modalShow}
-                    size="xl"
+                    size="lg"
                     centered
                     style={modalStyle}
                     >
@@ -47,6 +47,7 @@ function PhotoModal({photo}){
                             <Image fluid src={img_link} alt={title}/>
                         </Modal.Body>
                         <Modal.Footer>
+                            <p>{photo.date} - {photo.title}</p>
                             <Button onClick={() => setModalShow(false)}>Close</Button>
                         </Modal.Footer>
                     </Modal>

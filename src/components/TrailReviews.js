@@ -25,6 +25,10 @@ function TrailReviews({reviews, onNewReview, onDeleteReview}){
         setRating({rating, maxRating})
     }
 
+    const allRatings = reviews.map((review) => review.rating)
+    const initialAvg = allRatings.length > 0 ? allRatings.reduce((a,b) => a + b, 0)/allRatings.length : 0
+    const finalAvg = parseFloat(initialAvg).toFixed(1)
+
     function onReviewSubmit(e){
         e.preventDefault()
         fetch(`http://localhost:3000/reviews`, {
@@ -86,7 +90,8 @@ function TrailReviews({reviews, onNewReview, onDeleteReview}){
     return(
         <div>
         <Comment.Group>
-            <Header id="reviewheader" as='h2' dividing>Reviews</Header>
+            <Header id="reviewheader" as='h2' dividing>Reviews (Average Rating: {finalAvg})</Header>
+            {/* <Header.Subheader>Average Rating: {finalAvg}</Header.Subheader> */}
         {reviewList}
         </Comment.Group>
         <div>
