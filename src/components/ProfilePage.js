@@ -70,7 +70,8 @@ function ProfilePage(){
                     <h4>{location}</h4>
                     <p>{bio}</p>
                     <ButtonGroup vertical>
-                        {/* <Button as='a' href={`mailto:${email}`}>Email</Button><br/> */}
+                        <Button onClick={() => history.push(`/user/${id}/lists`)}>See Favorited Trails</Button>
+                        {currentUserId === parseInt(id) ? <Button onClick={() => history.push(`/user/${id}/edit`)}>Update my info</Button> : null}<br/>
                         {currentUserId === parseInt(id) ? <Button onClick={handleEditForm}>Change my photo</Button> : null}
                         {editForm ? 
                         <form onSubmit={handlePicSubmit}>
@@ -79,8 +80,6 @@ function ProfilePage(){
                             <Button>Add photo</Button>
                         </form>
                         : null}
-                        {currentUserId === parseInt(id) ? <Button onClick={() => history.push(`/user/${id}/edit`)}>Update my info</Button> : null}<br/>
-                        <Button onClick={() => history.push(`/user/${id}/lists`)}>See Favorited Trails</Button>
                     </ButtonGroup>
                     </div>
                 </div>

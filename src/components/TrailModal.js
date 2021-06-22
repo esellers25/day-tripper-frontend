@@ -2,19 +2,20 @@ import  Button  from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
 
 function TrailModal({trail, onHide, show}){
-    const {name, difficulty, state, location, length, elevation_gain} = trail
+    const {name, difficulty, location, length, elevation_gain} = trail
 
     
     return(
-        <div>
+        <div className="trailModal">
             <Modal 
             show={show}
+            size='sm'
             aria-labelledby="contained-modal-title-vcenter"
             centered
             >
-                <Modal.Title>{name}</Modal.Title>
+                <Modal.Title id="modalTitle">{name}</Modal.Title>
                 <Modal.Body>
-                    <h4>{location} ({state})</h4>
+                    <h4>{location}</h4>
                     <p>Difficulty: {difficulty}</p>
                     <p>Length: {length} miles</p>
                     <p>Elevation Gain: {elevation_gain} ft</p>

@@ -81,7 +81,7 @@ function HomePage(){
 
         
     return(
-        <>
+        <div className="mainPage">
             <h2 className="home">All Hiking Trails</h2>
             <div className="trailsHomeContainer">
                 <Filter onStateChange={handleStateChange}
@@ -97,7 +97,7 @@ function HomePage(){
                 <div className="trailsHome">
                 <TrailList trails={trailsByLength}/>
                 </div>}
-        </>
+        </div>
     )
 }
 

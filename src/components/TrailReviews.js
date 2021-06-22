@@ -2,7 +2,7 @@ import {useHistory, useParams} from 'react-router-dom'
 import {useState} from 'react'
 import {useSelector} from 'react-redux'
 import {Button} from './style'
-import { Comment, Header } from 'semantic-ui-react'
+import { Comment, Header, Rating } from 'semantic-ui-react'
 
 function TrailReviews({reviews, onNewReview, onDeleteReview}){
     let today = new Date().toISOString().substr(0, 10);
@@ -21,6 +21,10 @@ function TrailReviews({reviews, onNewReview, onDeleteReview}){
         setShow(!show)
     }
 
+    function handleRating(e, {rating, maxRating}){
+        setRating({rating, maxRating})
+    }
+
     function onReviewSubmit(e){
         e.preventDefault()
         fetch(`http://localhost:3000/reviews`, {
@@ -31,7 +35,7 @@ function TrailReviews({reviews, onNewReview, onDeleteReview}){
             },
             body: JSON.stringify({
                 comment: comment,
-                rating: rating,
+                rating: rating.rating,
                 difficulty: difficulty,
                 date: date,
                 trail_id: id,
@@ -41,7 +45,7 @@ function TrailReviews({reviews, onNewReview, onDeleteReview}){
         .then(r => r.json())
         .then(newReview => {
             onNewReview(newReview)
-            setRating("")
+            setRating(0)
             setComment("")
             setDifficulty("")
             setDate(today)
@@ -82,25 +86,26 @@ function TrailReviews({reviews, onNewReview, onDeleteReview}){
     return(
         <div>
         <Comment.Group>
-            <Header id="reviewheader" as='h4' dividing>Reviews</Header>
+            <Header id="reviewheader" as='h2' dividing>Reviews</Header>
         {reviewList}
         </Comment.Group>
         <div>
             <h3>Add a review</h3>
             {localStorage.token ? <Button onClick={handleFormShow}>Review</Button> : "Log in to leave a review!"}
             {show ? 
-            <div>
+            <div className="reviewForm">
                 <form onSubmit={onReviewSubmit}>
                     <label htmlFor="rating">Rating</label>
-                    <input value={rating} onChange={(e) => setRating(e.target.value)} name="rating" type="number" min={1} max={5}></input>
+                    <Rating value={rating} onRate={handleRating} name="rating" type="number" maxRating={5} clearable></Rating>
                     <label htmlFor="difficulty">Difficulty</label>
                     <select name="difficulty" value={difficulty} onChange={(e) => setDifficulty(e.target.value)}>
+                        <option value="" disabled selected>Select</option>
                         <option value="easy">Easy</option>
                         <option value="moderate">Moderate</option>
                         <option value="hard">Hard</option>
                     </select>
-                    <label htmlFor="comment">Comment</label>
-                    <input value={comment} onChange={(e) => setComment(e.target.value)} name="comment" type="textarea"></input>
+                    <label className="comment" htmlFor="comment">Comment</label>
+                    <textarea className="comment" value={comment} onChange={(e) => setComment(e.target.value)} name="comment" placeholder="Write your review here" rows={5} type="textarea"></textarea>
                     <label htmlFor="date">Date</label>
                     <input value={date} onChange={(e) => setDate(e.target.value)} id="today" name="date" type="date"></input>
                     <Button type="submit">Submit my review</Button>

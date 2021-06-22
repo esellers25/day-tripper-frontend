@@ -49,7 +49,7 @@ function TrailCard({trail}){
 
     let cardStyle = {
         width: '20rem',
-        height: '28rem',
+        height: '26.5rem',
         textAlign: 'center',
         alignItems: 'center',
         marginBottom: '28px',
@@ -59,12 +59,12 @@ function TrailCard({trail}){
 
     let cardImage = {
         height: '15rem',
+        paddingBottom: '1.3rem'
     }
     return(
         <div>
             <Card style={cardStyle}>
                 {photos.length > 0 ? <Card.Img style={cardImage} variant="top" src={photos[0].img_link} alt={photos[0].title}/> : null}
-                <Card.Body></Card.Body>
                 <Card.Title className="mainTrailTitle" onClick={() => history.push(`/trail/${id}`)}>{name}</Card.Title>
                 <Card.Subtitle>{location}</Card.Subtitle>
                 <SmallButton secondary onClick={() => setModalShow(true)}>

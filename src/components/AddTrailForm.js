@@ -43,15 +43,15 @@ function AddTrailForm(){
     
 
     return(
-        <div>
+        <div className="trailPage">
             <h2 className="addTrail">Add a Trail</h2>
             <TrailForm onSubmit={addNewTrail} className="editform">
                 <label htmlFor="name">Summit/Trail Name</label>
                 <input name="name" type="text" value={formData.name} onChange={handleChange}></input>
                 <label htmlFor="location">Location</label>
-                <input name="location" type="text" value={formData.location} onChange={handleChange}></input>
+                <input name="location" type="text" placeholder="Burlington, VT" value={formData.location} onChange={handleChange}></input>
                 <label htmlFor="state">State</label>
-                <input name="state" type="text" value={formData.state} onChange={handleChange}></input>
+                <input name="state" type="text" placeholder="VT" value={formData.state} onChange={handleChange}></input>
                 <label htmlFor="length">Length in miles</label>
                 <input name="length" type="number" step="any" value={formData.length} onChange={handleChange}></input>
                 <label htmlFor="difficulty">Difficulty</label>
@@ -73,7 +73,7 @@ function AddTrailForm(){
                 <label htmlFor="latitude">Trailhead Latitude</label>
                 <input name="latitude" type="number" step="any" value={formData.latitude} onChange={handleChange}></input>
                 <label htmlFor="longitude">Trailhead Longitude</label>
-                <input name="longitude"  type="number" step="any" value={formData.longitude} onChange={handleChange}></input>
+                <input name="longitude"  type="number" step="any" value={formData.longitude} onChange={handleChange}></input><br/>
                 <Button type="submit">Add Trail</Button>
             </TrailForm>
         </div>

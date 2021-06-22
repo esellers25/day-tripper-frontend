@@ -28,6 +28,7 @@ function Header(){
                     <Nav id="navbar" className="ml-auto">
                         <Nav.Link href="/home">Browse Trails</Nav.Link>
                         <Nav.Link href="/addtrail">Add a Trail</Nav.Link>
+                        {username !== "" ? <Nav.Link onClick={() => history.push("/allusers")}>Users</Nav.Link>: null}
                         {username !== "" ? 
                         <NavDropdown title="My Profile" href={`/user/${id}`}>
                             <NavDropdown.Item onClick={() => history.push(`/user/${id}`)}>View my details</NavDropdown.Item>

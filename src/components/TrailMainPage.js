@@ -77,7 +77,7 @@ function TrailMainPage(){
         }
 
     return(
-        <div>
+        <div className="trailMain">
             <div className="trailComponents">
                 <h2>{trail.name} - {trail.location}</h2>
                 {trailIds.includes(parseInt(id)) ? null : <Button onClick={() => addFavorite()}>{favorited ? "Added" : "Add to favorites"}</Button>}

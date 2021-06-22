@@ -18,7 +18,6 @@ function FavList(){
         fetch(`http://localhost:3000/lists/${id}`)
         .then(r => r.json())
         .then(resp => {
-            console.log(resp)
             setList(resp)
             setTrailList(resp.trail_lists)
             setPageLoaded(true)
@@ -32,12 +31,11 @@ function FavList(){
             <p>Loading</p>
         )
     }
-    
   
     let trails = trailList.map((obj) => ({trail: obj.trail, trail_list: obj.id}))
   
     let myTrails = trails.map((trailObj) => 
-        <ListCard key={trailObj.trail.id} trailObj={trailObj} onTrailDelete={handleTrailDelete}/>
+        <ListCard key={trailObj.trail.id} trailObj={trailObj} photos={trailObj.trail.photos} onTrailDelete={handleTrailDelete} pageLoaded={pageLoaded}/>
     )
 
     function handleTrailDelete(passedId){
@@ -69,16 +67,16 @@ function FavList(){
         .then(r => r.json())
         .then(resp => setIsPublic(resp.public))
     }
-
+    
     if(isPublic || currentUserId === parseInt(id)) {
         return(
             <div className="favoritesPage">
                 <h2>{list.title}</h2>
                 {currentUserId === parseInt(id) ? <Button onClick={() => handleListPublic(list.id)}>Make List {isPublic ? "Private": "Public"}</Button> : null}
                 <div className="favCards">
-                        <CardDeck style={{width: '18rem'}}>
-                            {myTrails}
-                        </CardDeck>
+                    <CardDeck>
+                        {myTrails}
+                    </CardDeck>
                 </div>
             </div>
         )

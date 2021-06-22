@@ -1,5 +1,5 @@
 import { GoogleMap, useJsApiLoader, Marker, InfoWindow } from '@react-google-maps/api';
-import {useRef, useCallback, useState} from 'react';
+import {useState} from 'react';
 
 function MapView({trails}){
 
@@ -24,12 +24,8 @@ function MapView({trails}){
     const options = {
             disableDefaultUI: true,
             zoomControl: true
-        }
-    
-    const mapRef = useRef()
-    const onMapLoad = useCallback((map) => {
-        mapRef.current = map
-    }, [])
+    }
+
       
     return (
         <div className="map">
@@ -40,7 +36,6 @@ function MapView({trails}){
                 center={center}
                 zoom={7}
                 options={options}
-                onLoad={onMapLoad}
                 >
                     {trails.map((trail) => <Marker key={trail.id} onClick={() => setSelectedTrail(trail)} position={{lat: trail.latitude, lng: trail.longitude}}/>)}
                     {selectedTrail && 

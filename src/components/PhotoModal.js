@@ -21,6 +21,10 @@ function PhotoModal({photo}){
         flexDirection: 'row',
         flexWrap: 'wrap'
     }
+
+    let modalStyle = {
+        padding: "0.5rem"
+    }
     
     return(
         <div>
@@ -37,6 +41,7 @@ function PhotoModal({photo}){
                     show={modalShow}
                     size="xl"
                     centered
+                    style={modalStyle}
                     >
                         <Modal.Body>
                             <Image fluid src={img_link} alt={title}/>

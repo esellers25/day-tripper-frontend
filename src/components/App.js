@@ -13,6 +13,7 @@ import EditProfile from './EditProfile';
 import { createGlobalStyle } from "styled-components";
 import TrailPhotos from './TrailPhotos';
 import AddTrailForm from './AddTrailForm';
+import AllUsers from './AllUsers';
 
 
 function App() {
@@ -106,6 +107,9 @@ function App() {
           </Route>
           <Route exact path="/user/:id/lists">
             <FavList/>
+          </Route>
+          <Route exact path="/allusers">
+            <AllUsers />
           </Route>
           <Route exact path="/addTrail">
             <AddTrailForm/>
