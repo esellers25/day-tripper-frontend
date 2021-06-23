@@ -1,7 +1,7 @@
 import {useHistory} from "react-router-dom";
 import {useDispatch} from 'react-redux'; 
 import {useState} from 'react'; 
-import {Form} from './style'
+import {SignUpForm} from './style'
 
 function Signup(){
 
@@ -42,7 +42,7 @@ function Signup(){
         <div className="login-form">
         <h2>Signup for an Account</h2>
         <p>{errorMessage}</p>
-        <Form onSubmit={(e) => signUp(e)}>
+        <SignUpForm onSubmit={(e) => signUp(e)}>
             <label htmlFor="name">Name</label>
             <input name="name" type="text"/>
             <label htmlFor="username">Username</label>
@@ -58,7 +58,7 @@ function Signup(){
             <input type="submit"/><br/>
             <h4>Already have an account?</h4>
             <button onClick={handleLoginClick}>Login</button>
-        </Form><br></br>
+        </SignUpForm><br></br>
     </div>
     )
 }

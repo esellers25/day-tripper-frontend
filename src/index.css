@@ -27,15 +27,12 @@ code {
   align-content: flex-start;
   margin-left: auto;
   margin-right: auto;
-  /* padding-top: 20px; */
-  /* max-height: 350px; */
   width: 75%;
   height: 52px;
   background-color: white;
   padding: 0.4rem;
   border-radius: 3px;
-  /* position: sticky;
-  top: 0; */
+  border: 3px solid rgb(17, 80, 59);
 }
 
 
@@ -47,11 +44,8 @@ code {
   justify-content: center;
   align-items: center;
   margin-right: 40px;
-  /* padding-left: 100px; */
   margin-left: 40px;
   margin-bottom: 30px;
-  /* position: sticky;
-  top: 0; */
 }
 
 .filterBar h4 {
@@ -105,8 +99,8 @@ code {
   flex-direction: row;
   justify-content: space-between;
   padding-bottom: 20px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 37px;
+  margin-bottom: 30px;
 }
 
 .trailComponents h2 {
@@ -123,15 +117,16 @@ code {
   max-height: 500px;
 }
 
-.carouselContainer {
-  margin-bottom: 50px;
+#carouselContainer {
+  padding-bottom: 30px;
   margin-top: 15px;
 }
 
 /* ******** Header ********* */
 
 .header {
-  background-color: #bfd7e8;
+  /* background-color: #bfd7e8; */
+  background-color: #4f9a7f;
   padding-top: 15px;
   padding-right: 20px;
   margin-left: 0px;
@@ -155,12 +150,12 @@ code {
 }
 
 .logo {
-  height: 82px;
+  height: 60px;
   width: auto;
   border-radius: 50%;
-  opacity: 50%;
+  opacity: 60%;
   margin-left: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .brandelements {
@@ -173,6 +168,7 @@ code {
 
 .editcontainer {
   text-align: center;
+  padding-bottom: 50px;
 }
 
 .profiledetails {
@@ -203,13 +199,21 @@ code {
   display: flex; 
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   align-content: center;
   color: white;
 }
 
+.profilelist p {
+  font-weight: 500;
+}
+
 .profilepage h2 {
   text-align: center;
+}
+
+#buttonGroup {
+  align-items: stretch;
 }
 
 .addTrail {
@@ -250,6 +254,7 @@ code {
 @media screen and (min-width: 799px) {
   .google-map {
     height: 60vh;
+    padding-bottom: 40px;
   }
 
 }
@@ -258,6 +263,7 @@ code {
   height: 65vh;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 50px;
 }
 
 .google-map-main {
@@ -287,7 +293,6 @@ code {
 }
 
 .ui.comments .comment>.content {
-  background-color: rgb(235, 232, 232);
   width: 350px;
   padding: 0.8rem;
   text-align: left;
@@ -304,17 +309,22 @@ code {
 
 #metadata {
   font-size: 1.1em;
-  color: rgb(109, 107, 107);
+  color: rgb(104, 101, 101);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-left: 0;
+  padding-right: 8px;
 }
 
 #reviewheader {
-  width: 450px;
+  width: 400px;
 }
 
 #commentblock {
-  background-color: rgb(235, 232, 232);
-  width: 375px;
-  padding: 0.5rem;
+  background-color: rgb(218, 216, 216);
+  width: 400px;
+  padding: 0.7rem;
 }
 
 .reviewForm {
@@ -324,12 +334,14 @@ code {
 .comment {
   vertical-align: text-top;
 }
+
 /* ******** Weather/Reviews ********* */
 
 #weatherReviews {
   display:flex;
   flex-direction: row;
   justify-content: space-between;
+  vertical-align: top;
 }
 
 .weatherCard {
@@ -384,7 +396,8 @@ code {
 
 .singleCard h2:hover {
   cursor: pointer;
-  color: rgb(126, 165, 152);
+  color: rgb(140, 184, 169);
+  text-shadow: 2px 2px black;
 }
 
 .userPage h2 {

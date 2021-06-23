@@ -69,9 +69,9 @@ function ProfilePage(){
                     <h4>Username : {username}</h4>
                     <h4>{location}</h4>
                     <p>{bio}</p>
-                    <ButtonGroup vertical>
+                    <ButtonGroup vertical id="buttonGroup">
                         <Button onClick={() => history.push(`/user/${id}/lists`)}>See Favorited Trails</Button>
-                        {currentUserId === parseInt(id) ? <Button onClick={() => history.push(`/user/${id}/edit`)}>Update my info</Button> : null}<br/>
+                        {currentUserId === parseInt(id) ? <Button onClick={() => history.push(`/user/${id}/edit`)}>Update my info</Button> : null}
                         {currentUserId === parseInt(id) ? <Button onClick={handleEditForm}>Change my photo</Button> : null}
                         {editForm ? 
                         <form onSubmit={handlePicSubmit}>

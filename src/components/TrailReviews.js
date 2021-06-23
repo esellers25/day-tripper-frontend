@@ -91,12 +91,11 @@ function TrailReviews({reviews, onNewReview, onDeleteReview}){
         <div>
         <Comment.Group>
             <Header id="reviewheader" as='h2' dividing>Reviews (Average Rating: {finalAvg})</Header>
-            {/* <Header.Subheader>Average Rating: {finalAvg}</Header.Subheader> */}
         {reviewList}
         </Comment.Group>
         <div>
             <h3>Add a review</h3>
-            {localStorage.token ? <Button onClick={handleFormShow}>Review</Button> : "Log in to leave a review!"}
+            {localStorage.token ? <Button secondary onClick={handleFormShow}>Review</Button> : "Log in to leave a review!"}
             {show ? 
             <div className="reviewForm">
                 <form onSubmit={onReviewSubmit}>

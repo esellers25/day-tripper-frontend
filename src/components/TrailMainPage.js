@@ -130,11 +130,11 @@ function TrailMainPage(){
         <div className="trailMain">
             <div className="trailComponents">
                 <h2>{trail.name} - {trail.location}</h2>
-                {trailIds.includes(parseInt(id)) ? null : <Button onClick={() => addFavorite()}>{favorited ? "Added" : "Add to favorites"}</Button>}
-                <h4>{error}</h4>
                 {photos.length >= 3 ? <TrailCarousel photos={photos}/> : null}
                 <ButtonGroup>
-                    <Button onClick={() => history.push(`/trail/${id}/photos`)}>See all photos</Button>
+                {trailIds.includes(parseInt(id)) ? null : <Button secondary onClick={() => addFavorite()}>{favorited ? "Added" : "Add to favorites"}</Button>}
+                <h4>{error}</h4>
+                    <Button secondary onClick={() => history.push(`/trail/${id}/photos`)}>See all photos</Button>
                     <AddPhotoForm />
                 </ButtonGroup>
                 <div className="trailstats">

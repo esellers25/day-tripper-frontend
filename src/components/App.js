@@ -48,11 +48,11 @@ function App() {
 
   h1 {
     font-family: 'Asap Condensed', sans-serif;
-    font-size: 4.6em;
+    font-size: 3.4em;
     cursor: pointer;
     text-align: center;
     margin-bottom: 8px;
-   
+    text-shadow: 1px 1px white;
   }
 
   h1:hover {

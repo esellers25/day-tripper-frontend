@@ -52,7 +52,7 @@ function AddPhotoForm(){
 
     return(
         <>
-            <Button onClick={() => handlePhotoDisplay()}>Upload a photo</Button>
+            <Button secondary onClick={() => handlePhotoDisplay()}>Upload a photo</Button>
                 <p>{message}</p>
                 {photoDisplay ? 
                 <div>

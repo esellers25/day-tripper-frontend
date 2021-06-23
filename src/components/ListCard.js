@@ -1,6 +1,7 @@
 import Card from 'react-bootstrap/Card'
 import {useSelector} from 'react-redux'
 import {useHistory, useParams} from 'react-router-dom'
+import { Button } from './style'
 
 function ListCard({trailObj, onTrailDelete, pageLoaded, photos}){
     
@@ -33,7 +34,7 @@ function ListCard({trailObj, onTrailDelete, pageLoaded, photos}){
                     Difficulty: {trail.difficulty}<br/>
                     Length: {trail.length} miles
                 </Card.Text>
-                {currentUserId === parseInt(id) ? <button onClick={() => onTrailDelete(trail_list)}>Remove from Favorites</button> : null}
+                {currentUserId === parseInt(id) ? <Button onClick={() => onTrailDelete(trail_list)}>Remove from Favorites</Button> : null}
             </Card>
         </div>
     )
