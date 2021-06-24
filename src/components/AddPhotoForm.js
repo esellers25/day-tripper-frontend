@@ -1,6 +1,6 @@
 import {useState} from 'react'
 import {useSelector} from 'react-redux'
-import {useParams} from 'react-router-dom'
+import {useParams, useHistory} from 'react-router-dom'
 import {Button} from './style'
 
 function AddPhotoForm(){
@@ -12,6 +12,7 @@ function AddPhotoForm(){
     const [message, setMessage] = useState(null)
     const [title, setTitle] = useState("")
     const [img, setImg] = useState(null)
+    const history = useHistory()
 
     function handlePhotoDisplay(){
         if(userId) {
@@ -46,6 +47,7 @@ function AddPhotoForm(){
             setMessage(resp.message)
             setPhotoDisplay(false)
             setTitle("")
+            history.push(`/trail/${id}/photos`)
         })
     }
 

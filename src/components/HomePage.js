@@ -88,6 +88,7 @@ function HomePage(){
                 onDifficultyChange={handleDifficultyChange}
                 onLengthChange={handleLengthChange}
                 states={states}
+                selectedState={selectedState}
                 onMapView={handleMapView}
                 mapView={mapView}
                 />

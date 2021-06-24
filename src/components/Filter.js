@@ -1,5 +1,6 @@
 import { MapButton, ResetButton } from "./style"
 
+
 function Filter({onStateChange, onLengthChange, onDifficultyChange, states, onMapView, mapView}){
     
     function handleStateChange(e){
