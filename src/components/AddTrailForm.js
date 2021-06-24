@@ -46,33 +46,33 @@ function AddTrailForm(){
         <div className="trailPage">
             <h2 className="addTrail">Add a Trail</h2>
             <TrailForm onSubmit={addNewTrail} className="editform">
-                <label htmlFor="name">Summit/Trail Name</label>
+                <label className="label" htmlFor="name">Summit/Trail Name</label>
                 <input name="name" type="text" value={formData.name} onChange={handleChange}></input>
-                <label htmlFor="location">Location</label>
+                <label className="label" htmlFor="location">Location</label>
                 <input name="location" type="text" placeholder="Burlington, VT" value={formData.location} onChange={handleChange}></input>
-                <label htmlFor="state">State</label>
+                <label className="label" htmlFor="state">State</label>
                 <input name="state" type="text" placeholder="VT" value={formData.state} onChange={handleChange}></input>
-                <label htmlFor="length">Length in miles</label>
+                <label className="label" htmlFor="length">Length in miles</label>
                 <input name="length" type="number" step="any" value={formData.length} onChange={handleChange}></input>
-                <label htmlFor="difficulty">Difficulty</label>
+                <label className="label" htmlFor="difficulty">Difficulty</label>
                 <select name="difficulty" value={formData.difficulty} onChange={handleChange}>
                     <option value="" disabled selected>Select</option>
                     <option value="hard">Hard</option>
                     <option value="moderate">Moderate</option>
                     <option value="easy">Easy</option>
                 </select>
-                <label htmlFor="elevation_gain">Elevation Gain in feet</label>
+                <label className="label" htmlFor="elevation_gain">Elevation Gain in feet</label>
                 <input name="elevation_gain" type="number" step="any" value={formData.elevation_gain} onChange={handleChange}></input>
-                <label htmlFor="route_type">Route Type</label>
+                <label className="label" htmlFor="route_type">Route Type</label>
                 <select name="route_type" value={formData.route_type} onChange={handleChange}>
                     <option value="" disabled selected>Select</option>
                     <option value="Loop">Loop</option>
                     <option value="Out and Back">Out and Back</option>
                     <option value="Point to Point">Point to Point</option>
                 </select>
-                <label htmlFor="latitude">Trailhead Latitude</label>
+                <label className="label" htmlFor="latitude">Trailhead Latitude</label>
                 <input name="latitude" type="number" step="any" value={formData.latitude} onChange={handleChange}></input>
-                <label htmlFor="longitude">Trailhead Longitude</label>
+                <label className="label" htmlFor="longitude">Trailhead Longitude</label>
                 <input name="longitude"  type="number" step="any" value={formData.longitude} onChange={handleChange}></input><br/>
                 <Button type="submit">Add Trail</Button>
             </TrailForm>

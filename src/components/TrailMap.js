@@ -24,6 +24,7 @@ function TrailMap({coordinates}){
 
     const options = {
             disableDefaultUI: true,
+            zoomControl: true
     }
         
         return(

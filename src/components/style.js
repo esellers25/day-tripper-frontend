@@ -56,7 +56,7 @@ text-align: left;
 `;
 
 export const TrailForm = styled(Form)`
-height: 550px;
+height: 585px;
 padding: 1rem;
 `;
 
@@ -67,5 +67,5 @@ padding: 1.3rem;
 `;
 
 export const SignUpForm = styled(Form)`
-height: 470px;
+height: 540px;
 `

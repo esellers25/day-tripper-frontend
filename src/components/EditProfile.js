@@ -52,17 +52,17 @@ function EditProfile(){
         <div className="editcontainer">
             <h2>Edit profile details</h2>
             <Form onSubmit={handleEditSubmit}>
-                <label htmlFor="name">Name</label>
+                <label className="label" htmlFor="name">Name</label>
                 <input type="text" name="name" value={formInfo.name} onChange={handleChange}></input>
-                <label htmlFor="username" >Username</label>
+                <label className="label" htmlFor="username" >Username</label>
                 <input type="text" name="username" value={formInfo.username} onChange={handleChange}></input>
-                <label htmlFor="bio" >Bio</label>
+                <label className="label" htmlFor="bio" >Bio</label>
                 <input type="text" name="bio" value={formInfo.bio} onChange={handleChange}></input>
-                <label htmlFor="email" >Email</label>
+                <label className="label" htmlFor="email" >Email</label>
                 <input type="text" name="email" value={formInfo.email} onChange={handleChange}></input>
-                <label htmlFor="location">Location</label>
+                <label className="label" htmlFor="location">Location</label>
                 <input type="text" name="location" value={formInfo.location} onChange={handleChange}></input>
-                <label htmlFor="password">Password</label>
+                <label className="label" htmlFor="password">Password</label>
                 <input type="password" name="password" value={formInfo.password} onChange={handleChange}></input><br/>
                 <Button type="submit">Save changes</Button>
             </Form>

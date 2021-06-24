@@ -52,12 +52,13 @@ function App() {
     cursor: pointer;
     text-align: center;
     margin-bottom: 8px;
-    text-shadow: 1px 1px white;
+    color: white;
+    text-shadow: 2px 2px black;
   }
 
   h1:hover {
-    color: white;
-    text-shadow: 2px 2px black;
+    color: black;
+    text-shadow: 1px 1px white;
   }
 
   h2 {

@@ -28,7 +28,6 @@ function ProfilePage(){
     const bio = useSelector((state) => state.profileReducer.bio)
     const currentUserId = useSelector((state) => state.userReducer.id)
     const profilePic = useSelector((state) => state.profileReducer.profilePic)
-    
 
     function handleEditForm(e){
         setEditForm(!editForm)

@@ -1,7 +1,7 @@
 import {useHistory} from "react-router-dom";
 import {useDispatch} from 'react-redux'; 
 import {useState} from 'react'; 
-import {SignUpForm} from './style'
+import {Button, SignUpForm} from './style'
 
 function Signup(){
 
@@ -21,7 +21,8 @@ function Signup(){
         formData.append('email', e.target[2].value)
         formData.append('profile_picture', e.target[3].files[0])
         formData.append('location', e.target[4].value)
-        formData.append('password', e.target[5].value)
+        formData.append('bio', e.target[5].value)
+        formData.append('password', e.target[6].value)
         fetch("http://localhost:3000/users", {
             method: "POST",
             body: formData
@@ -43,21 +44,23 @@ function Signup(){
         <h2>Signup for an Account</h2>
         <p>{errorMessage}</p>
         <SignUpForm onSubmit={(e) => signUp(e)}>
-            <label htmlFor="name">Name</label>
+            <label className="label" htmlFor="name">Name</label>
             <input name="name" type="text"/>
-            <label htmlFor="username">Username</label>
+            <label className="label" htmlFor="username">Username</label>
             <input name="username" type="text"/>
-            <label htmlFor="email">Email</label>
+            <label className="label" htmlFor="email">Email</label>
             <input name="email" type="text"/>
-            <label htmlFor="profilepic">Profile Picture</label>
+            <label className="label" htmlFor="profilepic">Profile Picture</label>
             <input name="profilepic" type="file" accept='image/*'/>
-            <label htmlFor="location">Location</label>
+            <label className="label" htmlFor="location">Location</label>
             <input name="location" type="text"/>
-            <label htmlFor="password">Password</label>
+            <label className="label" htmlFor="bio">Bio</label>
+            <input name="bio" type="text"/>
+            <label className="label" htmlFor="password">Password</label>
             <input name="password" type="password"/><br/>
-            <input type="submit"/><br/>
+            <Button type="submit">Submit</Button><br/>
             <h4>Already have an account?</h4>
-            <button onClick={handleLoginClick}>Login</button>
+            <Button onClick={handleLoginClick}>Login</Button>
         </SignUpForm><br></br>
     </div>
     )
